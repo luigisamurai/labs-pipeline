@@ -3,8 +3,8 @@
 import hudson.model.ParametersAction;
 import hudson.model.StringParameterValue
 // import hudson.model.ParameterDefinition
-// import hudson.model.StringParameterDefinition
-// import hudson.model.ParametersDefinitionProperty
+import hudson.model.StringParameterDefinition
+import hudson.model.ParametersDefinitionProperty
 
 
 // @Field final String TEST_ENV_PARAMETER = 'PIPELINE_ENV'
