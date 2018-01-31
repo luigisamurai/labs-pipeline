@@ -103,11 +103,19 @@ def execute() {
   //     println()
   // }
 
-  currentBuild.addProperty(
-    new ParametersDefinitionProperty(
-      new StringParameterDefinition("FOO", "bar", "")
-    )
-  );
+  newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
+  paramDef = currentBuild.getProperty(ParametersDefinitionProperty.class)
+
+  newArrList = new ArrayList<ParameterDefinition>(1)
+  newArrList.add(newParam)
+  newParamDef = new ParametersDefinitionProperty(newArrList)
+  currentBuild.addProperty(newParamDef)
+
+  // currentBuild.addProperty(
+  //   new ParametersDefinitionProperty(
+  //     new StringParameterDefinition("FOO", "bar", "")
+  //   )
+  // );
 
   stage('test') {
     echo('Hello, it is my firts multi branch pipeline.')
