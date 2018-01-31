@@ -1,7 +1,11 @@
 #!/usr/bin/env groovy
-import hudson.model.ParameterValue;
-import hudson.model.ParametersAction;
+// import hudson.model.ParameterValue;
+// import hudson.model.ParametersAction;
 // import hudson.model.ParameterDefinition
+import hudson.model.StringParameterDefinition
+import hudson.model.ParametersDefinitionProperty
+import hudson.model.ParameterDefinition
+
 
 // @Field final String TEST_ENV_PARAMETER = 'PIPELINE_ENV'
 
@@ -58,18 +62,46 @@ def execute() {
     //     parameters(jenkinsfileParameters)
     // ])
 
-  def changeLogSets = currentBuild.changeSets
-  for (int i = 0; i < changeLogSets.size(); i++) {
-      def entries = changeLogSets[i].items
-      for (int j = 0; j < entries.length; j++) {
-          def entry = entries[j]
-          echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
-          def files = new ArrayList(entry.affectedFiles)
-          for (int k = 0; k < files.size(); k++) {
-              def file = files[k]
-              echo "  ${file.editType.name} ${file.path}"
+  // def changeLogSets = currentBuild.changeSets
+  // for (int i = 0; i < changeLogSets.size(); i++) {
+  //     def entries = changeLogSets[i].items
+  //     for (int j = 0; j < entries.length; j++) {
+  //         def entry = entries[j]
+  //         echo "${entry.commitId} by ${entry.author} on ${new Date(entry.timestamp)}: ${entry.msg}"
+  //         def files = new ArrayList(entry.affectedFiles)
+  //         for (int k = 0; k < files.size(); k++) {
+  //             def file = files[k]
+  //             echo "  ${file.editType.name} ${file.path}"
+  //         }
+  //     }
+  // }
+
+  key   = 'GEM_SOURCE'
+  value = 'http://rubygems.delivery.puppetlabs.net'
+  desc  = 'The Rubygems Mirror URL'
+
+  for(job in Hudson.instance.items) {
+
+      println("[ " + job.name + " ] setting " + key + "=" + value)
+
+      newParam = new StringParameterDefinition(key, value, desc)
+      paramDef = job.getProperty(ParametersDefinitionProperty.class)
+
+      if (paramDef == null) {
+          newArrList = new ArrayList<ParameterDefinition>(1)
+          newArrList.add(newParam)
+          newParamDef = new ParametersDefinitionProperty(newArrList)
+          job.addProperty(newParamDef)
+      }
+      else {
+          // Parameters exist! We should check if this one exists already!
+          found = paramDef.parameterDefinitions.find{ it.name == key }
+          if (found == null) {
+              paramDef.parameterDefinitions.add(newParam)
           }
       }
+      //job.save()
+      println()
   }
 
   stage('test') {
