@@ -58,11 +58,8 @@ def execute() {
     //     parameters(jenkinsfileParameters)
     // ])
 
-    
-    parameters {
-        booleanParam(defaultValue: true, description: '', name: 'userFlag')
-    }
-
+  def newProperties = properties().toArray()
+  properties(newProperties)
   stage('test') {
     echo('Hello, it is my firts multi branch pipeline.')
   }
