@@ -65,7 +65,6 @@ def execute() {
 
   stage('test') {
     echo('Hello, it is my firts multi branch pipeline.')
-    stageDefinition.executeStage()
   }
 }
 
