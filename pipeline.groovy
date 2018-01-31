@@ -2,7 +2,7 @@
 import hudson.model.ParameterValue;
 import hudson.model.ParametersAction;
 
-@Field final String TEST_ENV_PARAMETER = 'PIPELINE_ENV'
+// @Field final String TEST_ENV_PARAMETER = 'PIPELINE_ENV'
 
 def execute() {
     def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
