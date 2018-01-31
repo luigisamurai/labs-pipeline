@@ -1,6 +1,8 @@
 #!/usr/bin/env groovy
-import hudson.model.StringParameterDefinition
-import hudson.model.ParametersDefinitionProperty
+import hudson.model.StringParameterValue
+// import hudson.model.StringParameterDefinition
+// import hudson.model.ParametersDefinitionProperty
+import hudson.model.ParametersAction
 import com.cloudbees.groovy.cps.NonCPS
 
 @NonCPS
