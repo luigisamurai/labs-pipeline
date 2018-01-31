@@ -4,7 +4,6 @@
 // import hudson.model.ParameterDefinition
 import hudson.model.StringParameterDefinition
 import hudson.model.ParametersDefinitionProperty
-import hudson.model.ParameterDefinition
 
 
 // @Field final String TEST_ENV_PARAMETER = 'PIPELINE_ENV'
@@ -76,33 +75,39 @@ def execute() {
   //     }
   // }
 
-  key   = 'GEM_SOURCE'
-  value = 'http://rubygems.delivery.puppetlabs.net'
-  desc  = 'The Rubygems Mirror URL'
+  // key   = 'GEM_SOURCE'
+  // value = 'http://rubygems.delivery.puppetlabs.net'
+  // desc  = 'The Rubygems Mirror URL'
 
-  for(job in Hudson.instance.items) {
+  // for(job in Hudson.instance.items) {
 
-      println("[ " + job.name + " ] setting " + key + "=" + value)
+  //     println("[ " + job.name + " ] setting " + key + "=" + value)
 
-      newParam = new StringParameterDefinition(key, value, desc)
-      paramDef = job.getProperty(ParametersDefinitionProperty.class)
+  //     newParam = new StringParameterDefinition(key, value, desc)
+  //     paramDef = job.getProperty(ParametersDefinitionProperty.class)
 
-      if (paramDef == null) {
-          newArrList = new ArrayList(1)
-          newArrList.add(newParam)
-          newParamDef = new ParametersDefinitionProperty(newArrList)
-          job.addProperty(newParamDef)
-      }
-      else {
-          // Parameters exist! We should check if this one exists already!
-          found = paramDef.parameterDefinitions.find{ it.name == key }
-          if (found == null) {
-              paramDef.parameterDefinitions.add(newParam)
-          }
-      }
-      //job.save()
-      println()
-  }
+  //     if (paramDef == null) {
+  //         newArrList = new ArrayList(1)
+  //         newArrList.add(newParam)
+  //         newParamDef = new ParametersDefinitionProperty(newArrList)
+  //         job.addProperty(newParamDef)
+  //     }
+  //     else {
+  //         // Parameters exist! We should check if this one exists already!
+  //         found = paramDef.parameterDefinitions.find{ it.name == key }
+  //         if (found == null) {
+  //             paramDef.parameterDefinitions.add(newParam)
+  //         }
+  //     }
+  //     //job.save()
+  //     println()
+  // }
+
+  currentBuild.addProperty(
+    new ParametersDefinitionProperty(
+      new StringParameterDefinition("FOO", "bar", "")
+    )
+  );
 
   stage('test') {
     echo('Hello, it is my firts multi branch pipeline.')
