@@ -113,7 +113,7 @@ def execute() {
   def newParamDef = new ParametersDefinitionProperty(newArrList)
   // currentBuild.addAction(newParamDef)
 
-  def job = Jenkins.instance.getItemByFullName(currentBuild.getProjectName())
+  def job = Jenkins.instance.getProjectName(currentBuild.getProjectName())
   job.addAction(newParamDef)
 
   // def build = Thread.currentThread().executable
