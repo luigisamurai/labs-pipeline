@@ -1,9 +1,10 @@
 #!/usr/bin/env groovy
 // import hudson.model.ParameterValue;
-// import hudson.model.ParametersAction;
+import hudson.model.ParametersAction;
+import hudson.model.StringParameterValue
 // import hudson.model.ParameterDefinition
-import hudson.model.StringParameterDefinition
-import hudson.model.ParametersDefinitionProperty
+// import hudson.model.StringParameterDefinition
+// import hudson.model.ParametersDefinitionProperty
 
 
 // @Field final String TEST_ENV_PARAMETER = 'PIPELINE_ENV'
@@ -103,13 +104,19 @@ def execute() {
   //     println()
   // }
 
-  newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
-  // paramDef = currentBuild.getProperty(ParametersDefinitionProperty.class)
+  // newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
+  // // paramDef = currentBuild.getProperty(ParametersDefinitionProperty.class)
 
-  def newArrList = []
-  newArrList.add(newParam)
-  newParamDef = new ParametersDefinitionProperty(newArrList)
-  currentBuild.addProperty(newParamDef)
+  // def newArrList = []
+  // newArrList.add(newParam)
+  // newParamDef = new ParametersDefinitionProperty(newArrList)
+  // currentBuild.addProperty(newParamDef)
+
+  def build = Thread.currentThread().executable
+  def pa = new ParametersAction([
+    new StringParameterValue("FOO", "BAR")
+  ])
+  build.addAction(pa)
 
   // currentBuild.addProperty(
   //   new ParametersDefinitionProperty(
