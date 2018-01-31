@@ -6,6 +6,9 @@ import hudson.model.ParametersAction;
 
 def execute() {
     def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+    def jenkinsbuilds = currentBuild.rawBuild.getAction(BuildDiscarder.class)
+
+    // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
     // def allParameters = []
 
     // def pipelineParameter =  string(
@@ -16,29 +19,29 @@ def execute() {
 
     // allParameters.add(pipelineParameter)
 
-    for(ParameterValue parameter in jenkinsfileParameters) {
-        println parameter.name
-        println parameter.getDefinition().getType()
-        // def item
+    // for(ParameterValue parameter in jenkinsfileParameters) {
+    //     println parameter.name
+    //     println parameter.getDefinition().getType()
+    //     def item
 
-        // if (parameter.choices) {
-        //     item = choice(
-        //         name: parameter.name,
-        //         description: description: parameter.description,
-        //         choices: parameter.choices,
-        //         defaultValue: parameter.defaultValue
-        //     )
-        // } else if () {
+    //     if (parameter.choices) {
+    //         item = choice(
+    //             name: parameter.name,
+    //             description: description: parameter.description,
+    //             choices: parameter.choices,
+    //             defaultValue: parameter.defaultValue
+    //         )
+    //     } else if () {
 
-        // } else {
-        //     item = string(
-        //         name: parameter.name,
-        //         description: parameter.description,
-        //         defaultValue: parameter.defaultValue
-        //     )
-        // }
-        // allParameters.add(item)
-    }
+    //     } else {
+    //         item = string(
+    //             name: parameter.name,
+    //             description: parameter.description,
+    //             defaultValue: parameter.defaultValue
+    //         )
+    //     }
+    //     allParameters.add(item)
+    // }
 
     // properties([
     //     buildDiscarder(
@@ -48,6 +51,11 @@ def execute() {
     //                 numToKeepStr: env.DISCARD_NUMBER_BUILDS)),
     //     parameters(allParameters)
     // ])
+
+    properties([
+        buildDiscarder(jenkinsbuilds),
+        parameters(allParameters)
+    ])
 
   stage('test') {
     echo('Hello, it is my firts multi branch pipeline.')
