@@ -21,7 +21,7 @@ def execute() {
 
 
   stage('test') {
-    echo('Hello, it is my firts multi branch pipeline. ${env.FOO}')
+    echo("Hello, it is my firts multi branch pipeline. ${env.FOO}"")
   }
 }
 
