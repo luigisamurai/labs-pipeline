@@ -5,10 +5,11 @@ import hudson.model.StringParameterValue
 // import hudson.model.ParameterDefinition
 import hudson.model.StringParameterDefinition
 import hudson.model.ParametersDefinitionProperty
+import com.cloudbees.groovy.cps.NonCPS
 
 
 // @Field final String TEST_ENV_PARAMETER = 'PIPELINE_ENV'
-
+@NonCPS
 def execute() {
     // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
     // def jenkinsbuilds = currentBuild.rawBuild.getAction(BuildDiscarder.class)
