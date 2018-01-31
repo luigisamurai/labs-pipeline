@@ -17,7 +17,7 @@ def execute() {
   def pa = new ParametersAction([
     new StringParameterValue("FOO", "BAR")
   ])
-  currentBuild.addAction(pa)
+  currentBuild.rawBuild.addAction(pa)
 
 
   stage('test') {
