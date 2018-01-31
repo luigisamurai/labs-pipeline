@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 import hudson.model.ParameterValue;
 import hudson.model.ParametersAction;
-import hudson.model.ParametersDefinitionProperty.ParameterDefinition
+import hudson.model.ParameterDefinition
 
 // @Field final String TEST_ENV_PARAMETER = 'PIPELINE_ENV'
 
