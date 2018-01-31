@@ -1,11 +1,12 @@
 #!/usr/bin/env groovy
 import hudson.model.ParameterValue;
 import hudson.model.ParametersAction;
+import hudson.model.ParametersDefinitionProperty.ParameterDefinition
 
 // @Field final String TEST_ENV_PARAMETER = 'PIPELINE_ENV'
 
 def execute() {
-    def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+    def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParameterDefinition.class)
     def jenkinsbuilds = currentBuild.rawBuild.getAction(BuildDiscarder.class)
 
     // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
