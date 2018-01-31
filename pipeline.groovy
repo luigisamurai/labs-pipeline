@@ -107,10 +107,10 @@ def execute() {
   newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
   // paramDef = currentBuild.getProperty(ParametersDefinitionProperty.class)
 
-  def newArrList = []
+  def newArrList = new ArrayList<ParametersDefinitionProperty>[]
   newArrList.add(newParam)
   newParamDef = new ParametersDefinitionProperty(newArrList)
-  currentBuild.addAction(newParamDef)
+  // currentBuild.addAction(newParamDef)
 
   // def build = Thread.currentThread().executable
   // def pa = new ParametersAction([
