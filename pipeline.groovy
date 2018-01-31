@@ -5,14 +5,17 @@ import com.cloudbees.groovy.cps.NonCPS
 
 @NonCPS
 def execute() {
-  def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
-  def newArrList = []
-  newArrList.add(newParam)
-  def newParamDef = new ParametersDefinitionProperty(newArrList)
+  // def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
+  // def newArrList = []
+  // newArrList.add(newParam)
+  // def newParamDef = new ParametersDefinitionProperty(newArrList)
 
-  // def job = Jenkins.instance.getProjectName(currentBuild.getProjectName())
-  echo("=======> el nombre es: ${currentBuild.getProjectName()}")
-  currentBuild.addAction(newParamDef)
+  // echo("=======> el nombre es: ${currentBuild.getProjectName()}")
+  // currentBuild.addAction(newParamDef)
+  def pa = new ParametersAction([
+    new StringParameterValue("FOO", "BAR")
+  ])
+  currentBuild.addAction(pa)
 
 
   stage('test') {
