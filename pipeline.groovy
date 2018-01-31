@@ -54,7 +54,7 @@ def execute() {
 
     properties([
         buildDiscarder(jenkinsbuilds),
-        parameters(allParameters)
+        parameters(jenkinsfileParameters)
     ])
 
   stage('test') {
