@@ -112,11 +112,11 @@ def execute() {
   // newParamDef = new ParametersDefinitionProperty(newArrList)
   // currentBuild.addProperty(newParamDef)
 
-  def build = Thread.currentThread().executable
+  // def build = Thread.currentThread().executable
   def pa = new ParametersAction([
     new StringParameterValue("FOO", "BAR")
   ])
-  build.addAction(pa)
+  currentBuild.addAction(pa)
 
   // currentBuild.addProperty(
   //   new ParametersDefinitionProperty(
