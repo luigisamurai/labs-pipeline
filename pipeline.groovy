@@ -88,7 +88,7 @@ def execute() {
       paramDef = job.getProperty(ParametersDefinitionProperty.class)
 
       if (paramDef == null) {
-          newArrList = new ArrayList<ParameterDefinition>(1)
+          newArrList = new ArrayList(1)
           newArrList.add(newParam)
           newParamDef = new ParametersDefinitionProperty(newArrList)
           job.addProperty(newParamDef)
