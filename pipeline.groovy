@@ -111,7 +111,7 @@ def execute() {
   def newArrList = []
   newArrList.add(newParam)
   def newParamDef = new ParametersDefinitionProperty(newArrList)
-  // currentBuild.addAction(newParamDef)
+  currentBuild.addAction(newParamDef)
 
   // def build = Thread.currentThread().executable
   // def pa = new ParametersAction([
