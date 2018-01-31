@@ -12,7 +12,7 @@ def execute() {
 
   // def job = Jenkins.instance.getProjectName(currentBuild.getProjectName())
   echo("=======> el nombre es: ${currentBuild.getProjectName()}")
-  currentBuild.addProperty(newParamDef)
+  currentBuild.addAction(newParamDef)
 
 
   stage('test') {
