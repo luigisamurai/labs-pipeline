@@ -7,13 +7,14 @@ import com.cloudbees.groovy.cps.NonCPS
 
 @NonCPS
 def execute() {
-  def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
-  def newArrList = []
-  newArrList.add(newParam)
-  def newParamDef = new ParametersDefinitionProperty(newArrList)
+  // def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
+  // def newArrList = []
+  // newArrList.add(newParam)
+  // def newParamDef = new ParametersDefinitionProperty(newArrList)
 
-  echo("=======> el nombre es: ${currentBuild.getProjectName()}")
-  currentBuild.rawBuild.addAction(newParamDef)
+  // echo("=======> el nombre es: ${currentBuild.getProjectName()}")
+  // currentBuild.rawBuild.addAction(newParamDef)
+
   // def pa = new ParametersAction([
   //   new StringParameterValue("FOO", "BAR")
   // ])
