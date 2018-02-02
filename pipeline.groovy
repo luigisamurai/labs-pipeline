@@ -78,12 +78,18 @@ def execute() {
   // println currentJob
   // currentJob.addProperty(jobParameter);
 
+  // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+
   // def pa = new ParametersAction([
   //   new StringParameterValue("FOO", "BAR")
   // ])
   // def job = Jenkins.instance.getItem('MultiBranchPipeline')
   // println job
   // job.addProperty(pa)
+
+  def jenkinsfileProperties = currentBuild.rawBuild.getAction(ParametersDefinitionProperty.class)
+
+  println jenkinsfileProperties
 
   stage('test') {
     sh 'npm install'
