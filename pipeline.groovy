@@ -93,12 +93,24 @@ def execute() {
   // println job.getItems()
 
   // properties(job.getItems())
-  def job = Jenkins.instance.getItem('MultiBranchPipeline')
-  println job.getAllProperties()
+  // def job = Jenkins.instance.getItem('MultiBranchPipeline')
+  // println job.getAllProperties()
 
-  properties(job.getAllProperties())
+  // properties(job.getAllProperties())
+  
+  properties << ([
+    parameters ([
+        string(
+            name: 'MY_CUSTOM_PROP',
+            description: 'Specify the environment to be run, by default it executes stg. for example: qa, stg, prod, onprem, eu',
+            defaultValue: 'MY_CUSTOM_PROP Value ...'
+        )
+    ])
+  ])
+
   stage('test') {
-     echo('Hello, it is my firts multi branch pipeline.')
+     echo("Hello, it is my firts multi branch pipeline. ${env.MY_CUSTOM_PROP}")
+     echo("Hello, it is my firts multi branch pipeline. ${env.PIPELINE_ENV}")
   }
 }
 
