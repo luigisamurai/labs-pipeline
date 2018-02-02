@@ -3,7 +3,7 @@
 def execute(pipelineProperties) {
         println pipelineProperties.getClass()
         
-        def abcd = parameters ([
+  def abcd = parameters ([
         string(
             name: 'PIPELINE_ENV_DEFAULT',
             description: 'Specify the environment to be run, by default it executes stg. for example: qa, stg, prod, onprem, eu',
@@ -11,9 +11,43 @@ def execute(pipelineProperties) {
         )
     ])
     
-    pipelineProperties.add(abcd)
+  //   pipelineProperties.add(abcd)
   
-  properties(pipelineProperties)
+  // properties(pipelineProperties)
+
+  def prop = []
+  def allParameters = []
+  def pipelineParameter =  string(
+    name: 'DEBUGER_BVAR',
+    description: 'Pipeline Environment Config key',
+    defaultValue: ''
+  )
+
+  allParameters.add(pipelineParameter)
+
+  for (ParametersDefinitionProperty property in pipelineProperties) {
+    if ( property.toString().startsWith("@parameters") ) {
+        def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+        for(ParameterValue parameter in jenkinsfileParameters) {
+          item = string(
+              name: parameter.name,
+              description: parameter.description
+          )
+          allParameters.add(item)
+        }
+
+        properties([
+            parameters(allParameters)
+        ])
+
+        prop.add(properties[0])
+      
+    } else {
+      prop.add(property)
+    }
+  }
+
+  properties(prop)
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
