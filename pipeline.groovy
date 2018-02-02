@@ -77,12 +77,13 @@ def execute() {
   // def currentJob = Jenkins.getInstance().getItem('MultiBranchPipeline')
   // println currentJob
   // currentJob.addProperty(jobParameter);
-  def pa = new ParametersAction([
-    new StringParameterValue("FOO", "BAR")
-  ])
-  def job = Jenkins.instance.getItem('MultiBranchPipeline')
-  println job
-  job.addProperty(pa)
+
+  // def pa = new ParametersAction([
+  //   new StringParameterValue("FOO", "BAR")
+  // ])
+  // def job = Jenkins.instance.getItem('MultiBranchPipeline')
+  // println job
+  // job.addProperty(pa)
 
   stage('test') {
     sh 'npm install'
