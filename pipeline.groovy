@@ -29,8 +29,7 @@ def execute() {
 
   def pipelineParameter =  string(
       name: 'PIPELINE_ENV',
-      description: 'Pipeline Environment Config key',
-      defaultValue: env.DEFAULT_PIPELINE_ENV
+      description: 'Pipeline Environment Config key'
   )
 
   def allParameters = []
@@ -42,8 +41,7 @@ def execute() {
 
       item = string(
           name: parameter.name,
-          description: parameter.description,
-          defaultValue: parameter.defaultValue || ''
+          description: parameter.description
       )
       
       allParameters.add(item)
