@@ -39,14 +39,8 @@ def execute(pipelineProperties) {
         // properties([
         //     parameters(allParameters)
         // ])
-
-        prop.add([parameters(
-          string(
-            name: 'DEBUGER_BVAR',
-            description: 'Pipeline Environment Config key',
-            defaultValue: ''
-          )
-        )])
+        println property.toString()
+        
       
     } else {
       prop.add(property)
