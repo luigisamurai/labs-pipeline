@@ -9,6 +9,18 @@ import hudson.triggers.Trigger
 import hudson.model.JobParameterDefinition
 import hudson.model.JobProperty
 
+def getDefautProperties() {
+return [
+    parameters ([
+        string(
+            name: 'MY_CUSTOM_PROP',
+            description: 'Specify the environment to be run, by default it executes stg. for example: qa, stg, prod, onprem, eu',
+            defaultValue: 'MY_CUSTOM_PROP Value ...'
+        )
+    ])
+  ]
+}
+
 @NonCPS
 def execute() {
   // def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
@@ -93,15 +105,7 @@ def execute() {
   // println job.getItems()
 
   
-  properties([
-    parameters ([
-        string(
-            name: 'MY_CUSTOM_PROP',
-            description: 'Specify the environment to be run, by default it executes stg. for example: qa, stg, prod, onprem, eu',
-            defaultValue: 'MY_CUSTOM_PROP Value ...'
-        )
-    ])
-  ])
+  //properties()
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.MY_CUSTOM_PROP}")
