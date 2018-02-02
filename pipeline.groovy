@@ -94,8 +94,9 @@ def execute() {
 
   // properties(job.getItems())
   def job = Jenkins.instance.getItem('MultiBranchPipeline')
-  println job.getProperties()
-  properties(job.getProperties())
+  println job.getAllProperties()
+
+  properties(job.getAllProperties())
   stage('test') {
      echo('Hello, it is my firts multi branch pipeline.')
   }
