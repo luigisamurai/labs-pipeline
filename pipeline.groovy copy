@@ -120,7 +120,7 @@ def execute() {
     new StringParameterValue("FOO", "BAR")
   ])
   def job = Jenkins.instance.getProjectName('MultiBranchPipeline')
-  job.addAction(newParamDef)
+  job.add(newParamDef)
   // currentBuild.addAction(pa)
 
   // currentBuild.addProperty(
