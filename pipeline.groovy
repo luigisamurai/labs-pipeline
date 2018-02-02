@@ -80,7 +80,7 @@ def execute() {
   def pa = new ParametersAction([
     new StringParameterValue("FOO", "BAR")
   ])
-  def job = Jenkins.instance.getProjectName('MultiBranchPipeline')
+  def job = Jenkins.instance.getItem('MultiBranchPipeline')
   job.add(newParamDef)
 
   stage('test') {
