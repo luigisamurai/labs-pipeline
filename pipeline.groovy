@@ -28,7 +28,7 @@ def execute() {
 
 
   properties([
-    parameters (addAction)
+    parameters (pa)
   ])
 
   stage('test') {
