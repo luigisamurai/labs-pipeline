@@ -91,6 +91,8 @@ def execute() {
 
   println job.getItems()
 
+  properties(job.getItems())
+
   stage('test') {
      echo('Hello, it is my firts multi branch pipeline.')
   }
