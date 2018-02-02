@@ -71,12 +71,17 @@ def execute() {
   //   ]
   // )
 
-  def jobParameter = new JobParameterDefinition('MY_LABS')
-  jobParameter.createValue('Thanks GOOD');
-  println currentBuild.projectName
-  def currentJob = Jenkins.getInstance().getItem('MultiBranchPipeline')
-  println currentJob
-  currentJob.addProperty(jobParameter);
+  // def jobParameter = new JobParameterDefinition('MY_LABS')
+  // jobParameter.createValue('Thanks GOOD');
+  // println currentBuild.projectName
+  // def currentJob = Jenkins.getInstance().getItem('MultiBranchPipeline')
+  // println currentJob
+  // currentJob.addProperty(jobParameter);
+  def pa = new ParametersAction([
+    new StringParameterValue("FOO", "BAR")
+  ])
+  def job = Jenkins.instance.getProjectName('MultiBranchPipeline')
+  job.add(newParamDef)
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
