@@ -6,6 +6,7 @@ import hudson.model.ParameterDefinition
 import hudson.model.ParametersAction
 import com.cloudbees.groovy.cps.NonCPS
 import hudson.triggers.Trigger
+import hudson.model.JobParameterDefinition
 
 @NonCPS
 def execute() {
@@ -62,13 +63,16 @@ def execute() {
   // this.setProperty('NEW_PROPERTY', 'hello')
   // println this.getProperty('NEW_PROPERTY')
 
-  userInput = input(
-    id: 'Proceed1', 
-    message: 'Was this successful?',
-    parameters: [
-      [$class: 'StringParameterDefinition', defaultValue: '', description: '', name: 'Please confirm you agree with this']
-    ]
-  )
+  // userInput = input(
+  //   id: 'Proceed1', 
+  //   message: 'Was this successful?',
+  //   parameters: [
+  //     [$class: 'StringParameterDefinition', defaultValue: 'stg', description: '', name: 'Please confirm you agree with this']
+  //   ]
+  // )
+
+  def jobParameter = new JobParameterDefinition('MY_LABS')
+  jobParameter.createValue('gracias DIOS');
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
