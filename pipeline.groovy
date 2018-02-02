@@ -16,7 +16,7 @@ def execute(pipelineProperties) {
   properties(pipelineProperties)
 
   stage('test') {
-     echo("Hello, it is my firts multi branch pipeline custom. ${env.MY_CUSTOM_PROP}")
+     echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
      echo("Hello, it is my firts multi branch pipeline. ${env.PIPELINE_ENV}")
   }
 }
