@@ -12,7 +12,7 @@ def execute(pipelineProperties) {
   //   println pipelineProperties[index].toString().startsWith("@parameters")
   // }
   for (ParametersDefinitionProperty property in pipelineProperties) {
-    println property
+    println property.class
   }
   
   // pipelineProperties[0]
