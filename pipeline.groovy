@@ -21,16 +21,15 @@ def execute() {
   // currentBuild.rawBuild.addAction(pa)
 
 
-  // def pa = new ParametersAction([
-  //   new StringParameterValue("FOO", "BAR")
-  // ])
-  // currentBuild.add(pa)
-
-  def parameters = currentBuild.getBadgeActions()
-
-  properties([
-    parameters (parameters)
+  def pa = new ParametersAction([
+    new StringParameterValue("FOO", "BAR")
   ])
+  currentBuild.getParent().addAction(pa)
+
+
+  // properties([
+  //   parameters (parameters)
+  // ])
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
