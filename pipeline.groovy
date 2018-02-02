@@ -23,32 +23,35 @@ def execute(pipelineProperties) {
 
   allParameters.add(pipelineParameter)
 
-  // for (ParametersDefinitionProperty property in pipelineProperties) {
-  //   if ( property.toString().startsWith("@parameters") ) {
-  //       // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
-  //       // for(ParameterValue parameter in jenkinsfileParameters) {
-  //       //   def item = string(
-  //       //       name: parameter.name,
-  //       //       description: parameter.description
-  //       //   )
-  //       //   allParameters.add(item)
-  //       // }
+  for (ParametersDefinitionProperty property in pipelineProperties) {
+    if ( property.toString().startsWith("@parameters") ) {
+        // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+        // for(ParameterValue parameter in jenkinsfileParameters) {
+        //   def item = string(
+        //       name: parameter.name,
+        //       description: parameter.description
+        //   )
+        //   allParameters.add(item)
+        // }
 
-  //       // properties([
-  //       //     parameters(allParameters)
-  //       // ])
-  //       prop.add(property.getArguments())
-  //       println property.getArguments()
+        // properties([
+        //     parameters(allParameters)
+        // ])
+        // prop.add(property.getArguments())
+        // println property.getArguments()
         
       
-  //   } else {
-  //     prop.add(property)
-  //   }
-  // }
+    } else {
+      prop.add(property)
+    }
+  }
 
-  properties.add(pipelineProperties[0])
-  properties.add(pipelineProperties[1])
-  properties.add(pipelineProperties[2])
+  properties([
+    parameters ([
+      pipelineParameter
+    ])
+  ])
+
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
