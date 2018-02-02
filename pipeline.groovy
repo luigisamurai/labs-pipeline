@@ -59,8 +59,8 @@ def execute() {
   //   parameters (allParameters)
   // ])
 
-  this.setProperty('NEW_PROPERTY', 'hello')
-  println this.getProperty('NEW_PROPERTY')
+  this.setVariable('NEW_PROPERTY', 'hello')
+  println this.getVariable('NEW_PROPERTY')
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
