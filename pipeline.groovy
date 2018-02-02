@@ -36,11 +36,11 @@ def execute(pipelineProperties) {
           allParameters.add(item)
         }
 
-        properties([
-            parameters(allParameters)
-        ])
+        // properties([
+        //     parameters(allParameters)
+        // ])
 
-        property.add(properties[0])
+        property.add(allParameters)
       
     } else {
       prop.add(property)
