@@ -49,7 +49,9 @@ def execute(pipelineProperties) {
   properties([
     parameters ([
       pipelineParameter
-    ])
+    ]),
+    pipelineProperties[1],
+    pipelineProperties[2]
   ])
 
 
