@@ -39,7 +39,7 @@ def execute(pipelineProperties) {
         // properties([
         //     parameters(allParameters)
         // ])
-        println property.toString()
+        println property..toArray()
         
       
     } else {
