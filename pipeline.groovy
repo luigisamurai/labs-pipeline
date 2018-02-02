@@ -51,7 +51,7 @@ def execute(pipelineProperties) {
   //   defaultValue: ''
   // )
 
-  for(ParameterValue parameter in jenkinsfileParameters) {
+  for(ParameterValue parameter in pipelineProperties[0]) {
     println parameter.name
     def item = string(
         name: parameter.name,
