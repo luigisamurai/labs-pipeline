@@ -20,7 +20,7 @@ def execute() {
   // ])
   // currentBuild.rawBuild.addAction(pa)
 
-  parameters {
+  parameters(
     choice(
         name: 'Nodes',
         choices:"Linux\nMac",
@@ -33,7 +33,7 @@ def execute() {
         name: 'Path',
         defaultValue:"/home/pencillr/builds/",
         description: "Where to put the build!")
-  }
+  )
 
 
   stage('test') {
