@@ -27,11 +27,39 @@ def execute() {
   // ])
   // currentBuild.getParent().addAction(pa)
 
+  def pipelineParameter =  string(
+      name: 'PIPELINE_ENV',
+      description: 'Pipeline Environment Config key',
+      defaultValue: env.DEFAULT_PIPELINE_ENV
+  )
 
+  def allParameters = []
+  allParameters.add(pipelineParameter)
+  def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+
+  for(ParameterValue parameter in jenkinsfileParameters) {
+      def item
+
+      if (parameter.choices) {
+          item = choice(
+              name: parameter.name,
+              description: description: parameter.description,
+              choices: parameter.choices,
+              defaultValue: parameter.defaultValue
+          )
+      } else {
+          item = string(
+              name: parameter.name,
+              description: parameter.description,
+              defaultValue: parameter.defaultValue
+          )
+      }
+      allParameters.add(item)
+  }
 
   properties([
     pipelineTriggers(currentBuild.getJob().getTriggers())
-    parameters (currentBuild.getJobActions(currentBuild.getJob()))
+    parameters (allParameters)
   ])
 
   stage('test') {
