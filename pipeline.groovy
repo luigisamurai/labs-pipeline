@@ -48,7 +48,7 @@ def execute() {
   }
 
   properties([
-    pipelineTriggers(currentBuild.getJob().getTriggers()),
+    // pipelineTriggers(currentBuild.getJob().getTriggers()),
     parameters (allParameters)
   ])
 
