@@ -17,7 +17,7 @@ def execute(pipelineProperties) {
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
     if ( property.toString().startsWith("@parameters") ) {
-      prop.add(pipelineParameter)
+      prop((pipelineParameter))
     } else {
       prop.add(property)
     }
