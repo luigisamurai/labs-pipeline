@@ -45,11 +45,11 @@ def execute(pipelineProperties) {
 
   def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
   def allParameters = []
-  def pipelineParameter =  string(
-    name: 'DEBUGER_BVAR',
-    description: 'Pipeline Environment Config key',
-    defaultValue: ''
-  )
+  // def pipelineParameter =  string(
+  //   name: 'DEBUGER_BVAR',
+  //   description: 'Pipeline Environment Config key',
+  //   defaultValue: ''
+  // )
 
   for(ParameterValue parameter in jenkinsfileParameters) {
     println parameter.name
