@@ -8,8 +8,11 @@ def execute(pipelineProperties) {
       defaultValue: ''
   )
 
-  for (index = 0; index < pipelineProperties.size(); index++) {
-    println pipelineProperties[index].toString().startsWith("@parameters")
+  // for (index = 0; index < pipelineProperties.size(); index++) {
+  //   println pipelineProperties[index].toString().startsWith("@parameters")
+  // }
+  for (ParametersDefinitionProperty property in pipelineProperties) {
+    println property
   }
   
   // pipelineProperties[0]
