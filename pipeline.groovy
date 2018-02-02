@@ -5,9 +5,9 @@ def execute(pipelineProperties) {
         
         def abcd = parameters ([
         string(
-            name: 'PIPELINE_ENV',
+            name: 'PIPELINE_ENV_DEFAULT',
             description: 'Specify the environment to be run, by default it executes stg. for example: qa, stg, prod, onprem, eu',
-            defaultValue: 'stg.....'
+            defaultValue: 'stgXDR.....'
         )
     ])
     
