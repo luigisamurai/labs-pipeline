@@ -54,7 +54,7 @@ def execute() {
   }
 
   properties([
-    // pipelineTriggers(currentBuild.getJob().getTriggers()),
+    pipelineTriggers(jenkinsfileTriggers),
     parameters (allParameters)
   ])
 
