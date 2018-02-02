@@ -5,6 +5,7 @@ import hudson.model.ParametersDefinitionProperty
 import hudson.model.ParameterDefinition
 import hudson.model.ParametersAction
 import com.cloudbees.groovy.cps.NonCPS
+import hudson.triggers.Trigger
 
 @NonCPS
 def execute() {
@@ -36,7 +37,7 @@ def execute() {
   allParameters.add(pipelineParameter)
   def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
 
-  def jenkinsfileTriggers = currentBuild.rawBuild.getAction(hudson.triggers.Trigger)
+  def jenkinsfileTriggers = currentBuild.rawBuild.getAction(Trigger.class)
 
   for(ParameterValue trigger in jenkinsfileTriggers) {
     println trigger.Cron
