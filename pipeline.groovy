@@ -11,12 +11,18 @@ def execute(pipelineProperties) {
   // for (index = 0; index < pipelineProperties.size(); index++) {
   //   println pipelineProperties[index].toString().startsWith("@parameters")
   // }
+  def prop = []
+
   for (ParametersDefinitionProperty property in pipelineProperties) {
-    println property.class
+    if ( property.toString().startsWith("@parameters") ) {
+      prop.add(parameters(property))
+    } else {
+      prop.add(property)
+    }
   }
   
   // pipelineProperties[0]
-  // properties(pipelineProperties)
+  properties(prop)
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.MY_CUSTOM_PROP}")
