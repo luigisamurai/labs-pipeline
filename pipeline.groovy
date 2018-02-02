@@ -47,8 +47,9 @@ def execute(pipelineProperties) {
     }
   }
 
-  properties(
+  properties([
     parameters(allParameters)
+   ]
   ).addAll(prop)
 
   stage('test') {
