@@ -52,6 +52,7 @@ def execute(pipelineProperties) {
   )
 
   for(ParameterValue parameter in jenkinsfileParameters) {
+    println parameter.name
     def item = string(
         name: parameter.name,
         description: parameter.description
