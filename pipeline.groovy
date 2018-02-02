@@ -2,7 +2,12 @@
 
 def execute(pipelineProperties) {
 
-  println pipelineProperties['parameters']
+  def pipelineParameter =  string(
+        name: 'MY_VARIABLE',
+        description: 'Pipeline Environment Config key',
+        defaultValue: ''
+    )
+  pipelineProperties[0].add(pipelineParameter)
   properties(pipelineProperties)
 
   stage('test') {
