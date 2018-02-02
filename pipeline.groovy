@@ -73,7 +73,7 @@ def execute() {
 
   def jobParameter = new JobParameterDefinition('MY_LABS')
   jobParameter.createValue('Thanks GOOD');
-  currentJob.addProperty(jobParameter);
+  currentBuild.addProperty(jobParameter);
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
