@@ -10,13 +10,13 @@ def execute(pipelineProperties) {
     )
   ]
 
-  def parameters ([
+  def parameters = [
     string(
         name: 'MY_VARIABLE',
         description: 'Pipeline Environment Config key',
         defaultValue: ''
     )
-  ])
+  ]
 
   // for (index = 0; index < pipelineProperties.size(); index++) {
   //   println pipelineProperties[index].toString().startsWith("@parameters")
