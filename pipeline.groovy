@@ -43,7 +43,7 @@ def execute() {
       item = string(
           name: parameter.name,
           description: parameter.description,
-          defaultValue: parameter.defaultValue
+          defaultValue: parameter.defaultValue || ''
       )
       
       allParameters.add(item)
