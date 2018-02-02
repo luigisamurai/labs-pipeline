@@ -43,7 +43,7 @@ def execute() {
       if (parameter.choices) {
           item = choice(
               name: parameter.name,
-              description: description: parameter.description,
+              description: parameter.description,
               choices: parameter.choices,
               defaultValue: parameter.defaultValue
           )
