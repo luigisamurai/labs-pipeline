@@ -40,7 +40,7 @@ def execute(pipelineProperties) {
         //     parameters(allParameters)
         // ])
 
-        property.add(allParameters)
+        prop.add(allParameters)
       
     } else {
       prop.add(property)
