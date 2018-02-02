@@ -2,6 +2,7 @@
 import hudson.model.StringParameterValue
 import hudson.model.StringParameterDefinition
 import hudson.model.ParametersDefinitionProperty
+import hudson.model.ParameterDefinition
 import hudson.model.ParametersAction
 import com.cloudbees.groovy.cps.NonCPS
 
@@ -10,7 +11,7 @@ def execute() {
   def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
   def newArrList = []
   newArrList.add(newParam)
-  def newParamDef = new ParametersDefinitionProperty(newArrList)
+  def newParamDef = new ParameterDefinition(newArrList)
 
   // echo("=======> el nombre es: ${currentBuild.getProjectName()}")
   // currentBuild.rawBuild.addAction(newParamDef)
