@@ -60,15 +60,12 @@ def execute(pipelineProperties) {
   //   allParameters.add(item)
   // }
 
-  // properties([
-  //   parameters (allParameters),
-  //   pipelineProperties[1],
-  //   pipelineProperties[2]
-  // ])
-
   properties([
-    parameters (pipelineProperties.parameters)
+    parameters (pipelineProperties[0]),
+    pipelineProperties[1],
+    pipelineProperties[2]
   ])
+
 
 
   stage('test') {
