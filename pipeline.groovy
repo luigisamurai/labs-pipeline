@@ -73,7 +73,8 @@ def execute() {
 
   def jobParameter = new JobParameterDefinition('MY_LABS')
   jobParameter.createValue('Thanks GOOD');
-  currentBuild.addProperty(jobParameter);
+  def currentJob = Jenkins.instance.getItem(currentBuild.projectName)
+  currentJob.addProperty(jobParameter);
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
