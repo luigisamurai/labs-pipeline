@@ -20,6 +20,21 @@ def execute() {
   // ])
   // currentBuild.rawBuild.addAction(pa)
 
+  parameters {
+    choice(
+        name: 'Nodes',
+        choices:"Linux\nMac",
+        description: "Choose Node!")
+    choice(
+        name: 'Versions',
+        choices:"3.4\n4.4",
+        description: "Build for which version?" )
+    string(
+        name: 'Path',
+        defaultValue:"/home/pencillr/builds/",
+        description: "Where to put the build!")
+  }
+
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
