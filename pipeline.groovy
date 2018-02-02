@@ -24,12 +24,12 @@ def execute() {
   def pa = new ParametersAction([
     new StringParameterValue("FOO", "BAR")
   ])
-  currentBuild.getParent().addAction(pa)
+  // currentBuild.getParent().addAction(pa)
 
 
-  // properties([
-  //   parameters (parameters)
-  // ])
+  properties([
+    parameters (addAction)
+  ])
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
