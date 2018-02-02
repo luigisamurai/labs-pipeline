@@ -1,19 +1,48 @@
 #!/usr/bin/env groovy
 
 def execute(pipelineProperties) {
-  def abcd = parameters ([
-        string(
-            name: 'PIPELINE_ENV_DEFAULT',
-            description: 'Specify the environment to be run, by default it executes stg. for example: qa, stg, prod, onprem, eu',
-            defaultValue: 'stgXDR.....'
-        )
-    ])
+  // def abcd = parameters ([
+  //       string(
+  //           name: 'PIPELINE_ENV_DEFAULT',
+  //           description: 'Specify the environment to be run, by default it executes stg. for example: qa, stg, prod, onprem, eu',
+  //           defaultValue: 'stgXDR.....'
+  //       )
+  //   ])
     
-  //   pipelineProperties.add(abcd)
+  // //   pipelineProperties.add(abcd)
   
-  // properties(pipelineProperties)
+  // // properties(pipelineProperties)
 
-  def prop = []
+  // def prop = []
+  // def allParameters = []
+
+
+  // allParameters.add(pipelineParameter)
+
+  // for (ParametersDefinitionProperty property in pipelineProperties) {
+  //   if ( property.toString().startsWith("@parameters") ) {
+  //       // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+  //       // for(ParameterValue parameter in jenkinsfileParameters) {
+  //       //   def item = string(
+  //       //       name: parameter.name,
+  //       //       description: parameter.description
+  //       //   )
+  //       //   allParameters.add(item)
+  //       // }
+
+  //       // properties([
+  //       //     parameters(allParameters)
+  //       // ])
+  //       // prop.add(property.getArguments())
+  //       // println property.getArguments()
+        
+      
+  //   } else {
+  //     prop.add(property)
+  //   }
+  // }
+
+  def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
   def allParameters = []
   def pipelineParameter =  string(
     name: 'DEBUGER_BVAR',
@@ -21,35 +50,16 @@ def execute(pipelineProperties) {
     defaultValue: ''
   )
 
-  allParameters.add(pipelineParameter)
-
-  for (ParametersDefinitionProperty property in pipelineProperties) {
-    if ( property.toString().startsWith("@parameters") ) {
-        // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
-        // for(ParameterValue parameter in jenkinsfileParameters) {
-        //   def item = string(
-        //       name: parameter.name,
-        //       description: parameter.description
-        //   )
-        //   allParameters.add(item)
-        // }
-
-        // properties([
-        //     parameters(allParameters)
-        // ])
-        // prop.add(property.getArguments())
-        // println property.getArguments()
-        
-      
-    } else {
-      prop.add(property)
-    }
+  for(ParameterValue parameter in jenkinsfileParameters) {
+    def item = string(
+        name: parameter.name,
+        description: parameter.description
+    )
+    allParameters.add(item)
   }
 
   properties([
-    parameters ([
-      pipelineParameter
-    ]),
+    parameters (allParameters),
     pipelineProperties[1],
     pipelineProperties[2]
   ])
