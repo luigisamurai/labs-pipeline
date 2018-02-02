@@ -7,6 +7,7 @@ import hudson.model.ParametersAction
 import com.cloudbees.groovy.cps.NonCPS
 import hudson.triggers.Trigger
 import hudson.model.JobParameterDefinition
+import hudson.model.JobProperty
 
 @NonCPS
 def execute() {
@@ -87,11 +88,13 @@ def execute() {
   // println job
   // job.addProperty(pa)
 
-  def job = Jenkins.instance.getItem('MultiBranchPipeline')
+  // def job = Jenkins.instance.getItem('MultiBranchPipeline')
 
-  println job.getItems()
+  // println job.getItems()
 
-  properties(job.getItems())
+  // properties(job.getItems())
+  def jenkinsfileParameters = currentBuild.rawBuild.getAction(JobProperty.class)
+  
 
   stage('test') {
      echo('Hello, it is my firts multi branch pipeline.')
