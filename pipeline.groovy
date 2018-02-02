@@ -31,7 +31,7 @@ def execute() {
 
   properties([
     pipelineTriggers(currentBuild.getJob().getTriggers())
-    parameters (currentBuild.getParameterDefinitions())
+    parameters (currentBuild.getJobActions(currentBuild.getJob()))
   ])
 
   stage('test') {
