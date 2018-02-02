@@ -85,7 +85,7 @@ def execute() {
   job.addProperty(pa)
 
   stage('test') {
-    echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
+    sh 'npm install'
   }
 }
 
