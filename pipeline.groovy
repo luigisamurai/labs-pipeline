@@ -92,8 +92,6 @@ def execute() {
 
   // println job.getItems()
 
-  def job = Jenkins.instance.getItem('MultiBranchPipeline')
-  println job.getAllProperties()
   
   properties([
     parameters ([
@@ -106,7 +104,7 @@ def execute() {
   ])
 
   stage('test') {
-     echo("Hello, it is my firts multi branch pipeline. ${env.MY_CUSTOM_PROP}")
+     echo("Hello, it is my firts multi branch pipeline custom. ${env.MY_CUSTOM_PROP}")
      echo("Hello, it is my firts multi branch pipeline. ${env.PIPELINE_ENV}")
   }
 }
