@@ -92,13 +92,13 @@ def execute() {
 
   // println job.getItems()
 
-  // properties(job.getItems())
-  // def job = Jenkins.instance.getItem('MultiBranchPipeline')
-  // println job.getAllProperties()
+  properties(job.getItems())
+  def job = Jenkins.instance.getItem('MultiBranchPipeline')
+  println job.getAllProperties()
 
   // properties(job.getAllProperties())
   
-  properties << ([
+  properties([
     parameters ([
         string(
             name: 'MY_CUSTOM_PROP',
