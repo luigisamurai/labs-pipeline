@@ -7,7 +7,7 @@ def execute(pipelineProperties) {
         description: 'Pipeline Environment Config key',
         defaultValue: ''
     )
-  pipelineProperties[0].addAll(pipelineParameter)
+  pipelineProperties[0].add(pipelineParameter)
   properties(pipelineProperties)
 
   stage('test') {
