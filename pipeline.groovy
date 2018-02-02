@@ -36,6 +36,12 @@ def execute() {
   allParameters.add(pipelineParameter)
   def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
 
+  def jenkinsfileTriggers = currentBuild.rawBuild.getAction(hudson.triggers.Trigger)
+
+  for(ParameterValue trigger in jenkinsfileTriggers) {
+    println trigger.Cron
+  }
+
   for(ParameterValue parameter in jenkinsfileParameters) {
       def item
 
