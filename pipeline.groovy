@@ -2,7 +2,7 @@
 
 def execute(pipelineProperties) {
 
-  println pipelineProperties[0]
+  println pipelineProperties['parameters']
   properties(pipelineProperties)
 
   stage('test') {
