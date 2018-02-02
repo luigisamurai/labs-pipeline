@@ -28,36 +28,38 @@ def execute() {
   // ])
   // currentBuild.getParent().addAction(pa)
 
-  def pipelineParameter =  string(
-      name: 'PIPELINE_ENV',
-      description: 'Pipeline Environment Config key'
-  )
+  // def pipelineParameter =  string(
+  //     name: 'PIPELINE_ENV',
+  //     description: 'Pipeline Environment Config key'
+  // )
 
-  def allParameters = []
-  allParameters.add(pipelineParameter)
-  def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+  // def allParameters = []
+  // allParameters.add(pipelineParameter)
+  // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
 
-  def jenkinsfileTriggers = currentBuild.rawBuild.getAction(Trigger.class)
+  // def jenkinsfileTriggers = currentBuild.rawBuild.getAction(Trigger.class)
 
-  for(ParameterValue trigger in jenkinsfileTriggers) {
-    println trigger.Cron
-  }
+  // for(ParameterValue trigger in jenkinsfileTriggers) {
+  //   println trigger.Cron
+  // }
 
-  for(ParameterValue parameter in jenkinsfileParameters) {
-      def item
+  // for(ParameterValue parameter in jenkinsfileParameters) {
+  //     def item
 
-      item = string(
-          name: parameter.name,
-          description: parameter.description
-      )
+  //     item = string(
+  //         name: parameter.name,
+  //         description: parameter.description
+  //     )
       
-      allParameters.add(item)
-  }
+  //     allParameters.add(item)
+  // }
 
-  properties([
-    pipelineTriggers(jenkinsfileTriggers),
-    parameters (allParameters)
-  ])
+  // properties([
+  //   pipelineTriggers(jenkinsfileTriggers),
+  //   parameters (allParameters)
+  // ])
+
+  println this.properties
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
