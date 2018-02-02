@@ -73,8 +73,9 @@ def execute() {
 
   def jobParameter = new JobParameterDefinition('MY_LABS')
   jobParameter.createValue('Thanks GOOD');
-  println currentBuild.projectName) 
+  println currentBuild.projectName
   def currentJob = Jenkins.getInstance().getItem(currentBuild.projectName)
+  println currentJob
   currentJob.addProperty(jobParameter);
 
   stage('test') {
