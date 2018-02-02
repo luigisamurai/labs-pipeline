@@ -8,10 +8,10 @@ import com.cloudbees.groovy.cps.NonCPS
 
 @NonCPS
 def execute() {
-  def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
-  def newArrList = []
-  newArrList.add(newParam)
-  def newParamDef = new ParameterDefinition(newArrList)
+  // def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
+  // def newArrList = []
+  // newArrList.add(newParam)
+  // def newParamDef = new ParameterDefinition(newArrList)
 
   // echo("=======> el nombre es: ${currentBuild.getProjectName()}")
   // currentBuild.rawBuild.addAction(newParamDef)
@@ -28,8 +28,10 @@ def execute() {
   // currentBuild.getParent().addAction(pa)
 
 
+
   properties([
-    parameters (newParamDef)
+    pipelineTriggers(currentBuild.getJob().getTriggers())
+    parameters (currentBuild.getParameterDefinitions())
   ])
 
   stage('test') {
