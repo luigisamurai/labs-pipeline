@@ -40,14 +40,17 @@ def execute(pipelineProperties) {
         //     parameters(allParameters)
         // ])
 
-        prop.add(allParameters)
+        // prop.add(allParameters)
       
     } else {
       prop.add(property)
     }
   }
 
-  properties(prop)
+  properties(
+    parameters(allParameters),
+    prop
+  )
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
