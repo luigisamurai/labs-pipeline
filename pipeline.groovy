@@ -10,6 +10,14 @@ def execute(pipelineProperties) {
     )
   ]
 
+  def parameters ([
+    string(
+        name: 'MY_VARIABLE',
+        description: 'Pipeline Environment Config key',
+        defaultValue: ''
+    )
+  ])
+
   // for (index = 0; index < pipelineProperties.size(); index++) {
   //   println pipelineProperties[index].toString().startsWith("@parameters")
   // }
@@ -17,7 +25,7 @@ def execute(pipelineProperties) {
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
     if ( property.toString().startsWith("@parameters") ) {
-      prop((pipelineParameter))
+      prop.add(parameters)
     } else {
       prop.add(property)
     }
