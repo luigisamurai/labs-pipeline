@@ -40,20 +40,12 @@ def execute() {
   for(ParameterValue parameter in jenkinsfileParameters) {
       def item
 
-      if (parameter.choices) {
-          item = choice(
-              name: parameter.name,
-              description: parameter.description,
-              choices: parameter.choices,
-              defaultValue: parameter.defaultValue
-          )
-      } else {
-          item = string(
-              name: parameter.name,
-              description: parameter.description,
-              defaultValue: parameter.defaultValue
-          )
-      }
+      item = string(
+          name: parameter.name,
+          description: parameter.description,
+          defaultValue: parameter.defaultValue
+      )
+      
       allParameters.add(item)
   }
 
