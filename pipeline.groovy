@@ -63,9 +63,12 @@ def execute() {
   // println this.getProperty('NEW_PROPERTY')
 
   userInput = input(
-    id: 'Proceed1', message: 'Was this successful?', parameters: [
-    [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']
-  ])
+    id: 'Proceed1', 
+    message: 'Was this successful?',
+    parameters: [
+      [$class: 'StringParameterDefinition', defaultValue: '', description: '', name: 'Please confirm you agree with this']
+    ]
+  )
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
