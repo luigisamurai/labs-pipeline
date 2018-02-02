@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 
+@NonCPS
 def execute(pipelineProperties) {
   // def abcd = parameters ([
   //       string(
