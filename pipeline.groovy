@@ -59,7 +59,7 @@ def execute() {
   //   parameters (allParameters)
   // ])
 
-  println this.properties
+  println this.getProperty('PIPELINE_ENV')
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
