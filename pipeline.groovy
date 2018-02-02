@@ -9,7 +9,7 @@ def execute(pipelineProperties) {
   )
 
   for (index = 0; index < pipelineProperties.size(); index++) {
-    println pipelineProperties[index].getClassName()
+    println pipelineProperties[index].class
   }
   
   // pipelineProperties[0]
