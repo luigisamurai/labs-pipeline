@@ -29,7 +29,7 @@ def execute(pipelineProperties) {
     if ( property.toString().startsWith("@parameters") ) {
         def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
         for(ParameterValue parameter in jenkinsfileParameters) {
-          item = string(
+          def item = string(
               name: parameter.name,
               description: parameter.description
           )
@@ -48,9 +48,8 @@ def execute(pipelineProperties) {
   }
 
   properties(
-    parameters(allParameters),
-    prop
-  )
+    parameters(allParameters)
+  ).addAll(prop)
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
