@@ -105,24 +105,22 @@ def execute() {
   //     println()
   // }
 
-  // def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
-  // // paramDef = currentBuild.getProperty(ParametersDefinitionProperty.class)
+  def newParam = new StringParameterDefinition('foo', 'var', 'mi variable')
+  // paramDef = currentBuild.getProperty(ParametersDefinitionProperty.class)
 
-  // def newArrList = []
-  // newArrList.add(newParam)
-  // def newParamDef = new ParametersDefinitionProperty(newArrList)
-  // // currentBuild.addAction(newParamDef)
+  def newArrList = []
+  newArrList.add(newParam)
+  def newParamDef = new ParametersDefinitionProperty(newArrList)
+  // currentBuild.addAction(newParamDef)
 
-  
+  def job = Jenkins.instance.getProjectName('MultiBranchPipeline')
+  job.addAction(newParamDef)
 
   // def build = Thread.currentThread().executable
-  def pa = new ParametersAction([
-    new StringParameterValue("FOO", "BAR")
-  ])
+  // def pa = new ParametersAction([
+  //   new StringParameterValue("FOO", "BAR")
+  // ])
   // currentBuild.addAction(pa)
-
-  def job = Jenkins.instance.getProjectName(currentBuild.getProjectName())
-  job.addAction(pa)
 
   // currentBuild.addProperty(
   //   new ParametersDefinitionProperty(
