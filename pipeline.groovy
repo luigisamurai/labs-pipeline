@@ -82,7 +82,7 @@ def execute() {
   ])
   def job = Jenkins.instance.getItem('MultiBranchPipeline')
   println job
-  job.add(pa)
+  job.addProperty(pa)
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
