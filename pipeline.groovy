@@ -81,7 +81,8 @@ def execute() {
     new StringParameterValue("FOO", "BAR")
   ])
   def job = Jenkins.instance.getItem('MultiBranchPipeline')
-  job.add(newParamDef)
+  println job
+  job.add(pa)
 
   stage('test') {
     echo("Hello, it is my firts multi branch pipeline. ${env.FOO}")
