@@ -13,11 +13,12 @@ def execute(pipelineProperties) {
   // for (index = 0; index < pipelineProperties.size(); index++) {
   //   println pipelineProperties[index].toString().startsWith("@parameters")
   // }
+  def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
   def prop = []
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
     if ( property.toString().startsWith("@parameters") ) {
-      prop.add(property)
+      prop.add(jenkinsfileParameters)
     } else {
       prop.add(property)
     }
