@@ -9,7 +9,7 @@ def execute(pipelineProperties) {
   )
 
   for (index = 0; index < pipelineProperties.size(); index++) {
-    println pipelineProperties[index].toString()
+    println pipelineProperties[index].toString().startsWith("@parameters")
   }
   
   // pipelineProperties[0]
