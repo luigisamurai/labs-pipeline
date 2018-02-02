@@ -43,27 +43,31 @@ def execute(pipelineProperties) {
   //   }
   // }
 
-  def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
-  def allParameters = []
-  // def pipelineParameter =  string(
-  //   name: 'DEBUGER_BVAR',
-  //   description: 'Pipeline Environment Config key',
-  //   defaultValue: ''
-  // )
+  // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+  // def allParameters = []
+  // // def pipelineParameter =  string(
+  // //   name: 'DEBUGER_BVAR',
+  // //   description: 'Pipeline Environment Config key',
+  // //   defaultValue: ''
+  // // )
 
-  for(ParameterValue parameter in pipelineProperties[0]) {
-    println parameter.name
-    def item = string(
-        name: parameter.name,
-        description: parameter.description
-    )
-    allParameters.add(item)
-  }
+  // for(ParameterValue parameter in pipelineProperties[0]) {
+  //   println parameter.name
+  //   def item = string(
+  //       name: parameter.name,
+  //       description: parameter.description
+  //   )
+  //   allParameters.add(item)
+  // }
+
+  // properties([
+  //   parameters (allParameters),
+  //   pipelineProperties[1],
+  //   pipelineProperties[2]
+  // ])
 
   properties([
-    parameters (allParameters),
-    pipelineProperties[1],
-    pipelineProperties[2]
+    parameters (pipelineProperties.parameters)
   ])
 
 
