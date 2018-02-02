@@ -25,7 +25,8 @@ def execute(pipelineProperties) {
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
     if ( property.toString().startsWith("@parameters") ) {
-      println property instanceof List
+      println property instanceof Collection
+      println property instanceof Set
     } else {
       prop.add(property)
     }
