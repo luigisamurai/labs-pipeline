@@ -12,20 +12,20 @@ def execute(pipelineProperties) {
   //       )
   //   ])
 
-  def parameters =[
-    [
-      $class: 'StringParameterDefinition',
-      defaultValue: '',
-      description: 'Some Description',
-      name : 'MY_PARAM'
-    ],
-    [
-      $class: 'StringParameterDefinition',
-      defaultValue: '',
-      description: 'Some Description', 
-      name: 'MY_PARAM2'
-    ]
-  ]
+  // def parameters = [
+  //   [
+  //     $class: 'StringParameterDefinition',
+  //     defaultValue: '',
+  //     description: 'Some Description',
+  //     name : 'MY_PARAM'
+  //   ],
+  //   [
+  //     $class: 'StringParameterDefinition',
+  //     defaultValue: '',
+  //     description: 'Some Description', 
+  //     name: 'MY_PARAM2'
+  //   ]
+  // ]
     
   // //   pipelineProperties.add(abcd)
   
@@ -79,18 +79,13 @@ def execute(pipelineProperties) {
   //   allParameters.add(item)
   // }
 
-
-
-  // for (ParametersDefinitionProperty property in pipelineProperties) {
-  //   allParameters.add(property)
-  // }
+  def allParameters = []
+  for (ParametersDefinitionProperty property in properties) {
+    allParameters.add(property)
+  }
 
   // properties(pipelineProperties)
-  properties(
-    parameters,
-    pipelineProperties[1],
-    pipelineProperties[2]
-  )
+  properties(pipelineProperties)
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
