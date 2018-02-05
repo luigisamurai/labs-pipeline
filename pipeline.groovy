@@ -23,8 +23,8 @@ def execute(pipelineProperties) {
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
         def parameters = prop.add(pipelineProperties[0].getArguments().get('<anonymous>'))
-        for(JobProperty parameteValue in parameters) {
-          println parameteValue
+        for(index = 0; index < parameters.size(); index++) {
+          println parameters[0]
         }
       } else {
         prop.add(property)
