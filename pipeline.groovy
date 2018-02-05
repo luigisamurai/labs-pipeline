@@ -64,12 +64,15 @@ def execute(supportedEnvs, pipelineProperties = null) {
       if (property.toString().startsWith("@parameters")) {      
         def jenkinsfileParameters = property.getArguments().get('<anonymous>')
         // LinkedHashMap
-        Set set = property.getArguments().entrySet();
-        Iterator iterator = set.iterator();   
-        while(iterator.hasNext()) {
-          Map.Entry me = (Map.Entry)iterator.next();
-          println "Key is: "+ me.getKey() + 
-                    "& Value is: "+me.getValue()+"\n";
+        // Set set = property.getArguments().entrySet();
+        // Iterator iterator = set.iterator();   
+        // while(iterator.hasNext()) {
+        //   Map.Entry me = (Map.Entry)iterator.next();
+        //   println "Key is: "+ me.getKey() + 
+        //             "& Value is: "+me.getValue().getName()+"\n";
+        // }
+        for(index = 0; index < jenkinsfileParameters.size(); index ++) {
+          print jenkinsfileParameters.get(index)
         }
         allParameters.addAll(jenkinsfileParameters)
       } else {
