@@ -88,7 +88,7 @@ def execute(pipelineProperties) {
   // properties(pipelineProperties)
   properties(
     parameters,
-    pipelineProperties[1]
+    pipelineProperties[1],
     pipelineProperties[2]
   )
 
