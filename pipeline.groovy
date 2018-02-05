@@ -23,6 +23,11 @@ def execute(pipelineProperties) {
       name: 'CUSTOM',
       description: 'Pipeline Environment Config key',
       defaultValue: 'CUSTOM---..'
+    ),
+    string(
+      name: 'OTRO',
+      description: 'OTRO',
+      defaultValue: 'OTRO---..'
     )
   ]
   // def prop = []
