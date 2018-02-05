@@ -2,7 +2,7 @@
 import hudson.model.ParametersDefinitionProperty
 import hudson.model.JobProperty
 
-def execute(pipelineProperties) {
+def execute(pipelineProperties = null) {
   // Codigo que ha funcionando
   // def defaultParameters =  [
   //     string(
