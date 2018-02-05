@@ -71,8 +71,13 @@ def execute(supportedEnvs, pipelineProperties = null) {
         //   println "Key is: "+ me.getKey() + 
         //             "& Value is: "+me.getValue().getName()+"\n";
         // }
-        for(index = 0; index < jenkinsfileParameters.size(); index ++) {
-          print jenkinsfileParameters.get(index)
+        // for(index = 0; index < jenkinsfileParameters.size(); index ++) {
+        //   jenkinsfileStringParameter = jenkinsfileParameters.get(index).toString()
+        // }
+
+        for(defualtIndex = 0; defualtIndex < defaultParameters.size(); defualtIndex ++) {
+          defualtStringParameter = defaultParameters.get(defualtIndex).toString()
+          println defualtStringParameter
         }
         allParameters.addAll(jenkinsfileParameters)
       } else {
