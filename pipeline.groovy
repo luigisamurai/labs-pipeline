@@ -23,10 +23,10 @@ def execute(pipelineProperties) {
     description: 'Pipeline Environment Config key',
     defaultValue: 'CUSTOM---..'
   )
-  def prop = []
-  def parameters = pipelineProperties[0].getArguments().get('<anonymous>')
-  parameters.add(customParam)
-  prop.addAll(parameters)
+  // def prop = []
+  // def parameters = pipelineProperties[0].getArguments().get('<anonymous>')
+  // parameters.add(customParam)
+  // prop.addAll(parameters)
 
   // for (ParametersDefinitionProperty property in pipelineProperties) {
   //     if (property.toString().startsWith("@parameters")) {
