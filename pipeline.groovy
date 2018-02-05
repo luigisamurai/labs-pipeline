@@ -51,7 +51,9 @@ def execute(pipelineProperties) {
   properties([
     parameters(
       allParameters
-    )
+    ),
+    pipelineProperties[1],
+    pipelineProperties[2]
   ])
 
   stage('test') {
