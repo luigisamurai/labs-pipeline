@@ -2,7 +2,7 @@
 import hudson.model.ParametersDefinitionProperty
 import hudson.model.JobProperty
 
-def execute(pipelineProperties = null) {
+def execute(supportedEnvs, pipelineProperties = null) {
   // Codigo que ha funcionando
   // def defaultParameters =  [
   //     string(
@@ -44,10 +44,10 @@ def execute(pipelineProperties = null) {
   // esta trabajo aun mejor
   def prop = []
   def defaultParameters =  [
-      string(
-      name: 'CUSTOM',
-      description: 'Pipeline Environment Config key',
-      defaultValue: 'CUSTOM---..'
+    choice(
+      name: 'PIPELINE_ENV',
+      description: 'Target environment',
+      choices: supportedEnvs.split().join('\n')
     ),
     string(
       name: 'OTRO',
