@@ -60,13 +60,19 @@ def execute(pipelineProperties) {
   //   allParameters.add(item)
   // }
 
-  properties([
-    pipelineProperties[0],
-    pipelineProperties[1],
-    pipelineProperties[2]
-  ])
+  def allParameters = []
 
+  string(
+      name: 'PIPELINE_ENV_DEFAULT',
+      description: 'Specify the environment to be run, by default it executes stg. for example: qa, stg, prod, onprem, eu',
+      defaultValue: 'stgXDR.....'
+  )
 
+  for (ParametersDefinitionProperty property in pipelineProperties) {
+    allParameters.add(item)
+  }
+
+  properties(allParameters)
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
