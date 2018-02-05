@@ -18,19 +18,31 @@ def execute(pipelineProperties) {
   //   println "Key is: "+ me.getKey() +  "& Value is: "+me.getValue();
   // }
 
-  def prop = []
+  def customParam =  string(
+    name: 'CUSTOM',
+    description: 'Pipeline Environment Config key',
+    defaultValue: 'CUSTOM---..'
+  )
+  // def prop = []
+  def parameters = pipelineProperties[0].getArguments().get('<anonymous>')
+  parameters.add(customParam)
 
-  for (ParametersDefinitionProperty property in pipelineProperties) {
-      if (property.toString().startsWith("@parameters")) {
-        def parameters = pipelineProperties[0].getArguments().get('<anonymous>')
-        println parameters.get(0)
+  // for (ParametersDefinitionProperty property in pipelineProperties) {
+  //     if (property.toString().startsWith("@parameters")) {
+  //       parameters = pipelineProperties[0].getArguments().get('<anonymous>')
+  //       parameters.add(customParam)
+  //       println parameters
       
-      } else {
-        prop.add(property)
-    }
-  }
+  //     } else {
+  //       prop.add(property)
+  //   }
+  // }
 
-  properties(prop)
+  // properties(prop)
+
+  parameters ([
+    parameters (parameters)
+  ])
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
