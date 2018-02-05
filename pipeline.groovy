@@ -1,4 +1,6 @@
 #!/usr/bin/env groovy
+import hudson.model.ParametersDefinitionProperty
+import hudson.model.StringParameterDefinition
 
 @NonCPS
 def execute(pipelineProperties) {
@@ -53,7 +55,7 @@ def execute(pipelineProperties) {
         // println property.getArguments()
         // property.add(item)
         // prop.add(property)
-        // prop.add(parameters)
+        prop.add(parameters)
 
     } else {
       prop.add(property)
