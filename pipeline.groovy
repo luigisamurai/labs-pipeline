@@ -23,9 +23,10 @@ def execute(pipelineProperties) {
     description: 'Pipeline Environment Config key',
     defaultValue: 'CUSTOM---..'
   )
-  // def prop = []
+  def prop = []
   def parameters = pipelineProperties[0].getArguments().get('<anonymous>')
   parameters.add(customParam)
+  prop.addAll(parameters )
 
   // for (ParametersDefinitionProperty property in pipelineProperties) {
   //     if (property.toString().startsWith("@parameters")) {
@@ -40,9 +41,7 @@ def execute(pipelineProperties) {
 
   // properties(prop)
 
-  properties ([
-    parameters (parameters)
-  ])
+  properties (prop)
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
