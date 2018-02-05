@@ -5,8 +5,8 @@ def execute(pipelineProperties) {
   print "====> Symbol: " + pipelineProperties[0].getSymbol()
   print "====> getKlass: " + pipelineProperties[0].getKlass()
   print "====> getModel: " + pipelineProperties[0].getModel()
-  print "====> getArguments: " + pipelineProperties[0].getArguments()
-  print "====> toMap: " + pipelineProperties[0].toMap()
+  print "====> getArguments: " + pipelineProperties[0].getArguments().values()
+  print "====> toMap: " + pipelineProperties[0].toMap().get("@parameters")
 
   def prop = []
 
