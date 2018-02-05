@@ -9,7 +9,7 @@ def execute(pipelineProperties) {
   print "====> toMap: " + pipelineProperties[0].toMap()
 
   properties(
-    pipelineProperties[0]
+    pipelineProperties
   )
 
   stage('test') {
