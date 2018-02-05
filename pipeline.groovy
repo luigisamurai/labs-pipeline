@@ -2,7 +2,7 @@
 
 def execute(pipelineProperties) {
 
-  print pipelineProperties[0]
+  print pipelineProperties[0].getClass()
   properties(pipelineProperties)
 
   stage('test') {
