@@ -56,8 +56,8 @@ def execute(pipelineProperties = null) {
     )
   ]
 
-  def allParameters = []
-  allParameters.addAll(defaultParameters)
+  def allParameters = defaultParameters
+  // allParameters.addAll(defaultParameters)
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {      
