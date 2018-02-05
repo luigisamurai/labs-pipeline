@@ -8,7 +8,9 @@ def execute(pipelineProperties) {
   print "====> getArguments: " + pipelineProperties[0].getArguments()
   print "====> toMap: " + pipelineProperties[0].toMap()
 
-  properties(pipelineProperties)
+  properties(
+    parameters (pipelineProperties[0].getArguments())
+  )
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
