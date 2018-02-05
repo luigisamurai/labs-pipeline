@@ -20,7 +20,7 @@ def execute(pipelineProperties) {
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
-
+        prop.add(pipelineProperties[0].getArguments().get('<anonymous>'))
       } else {
       prop.add(property)
     }
