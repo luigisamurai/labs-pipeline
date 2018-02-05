@@ -63,6 +63,13 @@ def execute(supportedEnvs, pipelineProperties = null) {
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {      
         def jenkinsfileParameters = property.getArguments().get('<anonymous>')
+        // LinkedHashMap
+        Iterator iterator = jenkinsfileParameters.entrySet()
+        while(iterator.hasNext()) {
+          Map.Entry me = (Map.Entry)iterator.next();
+          System.out.print("Key is: "+ me.getKey() + 
+                    "& Value is: "+me.getValue()+"\n");
+        }
         allParameters.addAll(jenkinsfileParameters)
       } else {
         prop.add(property)
