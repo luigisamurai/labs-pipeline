@@ -69,7 +69,7 @@ def execute(pipelineProperties) {
   )
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
-    allParameters.add(item)
+    allParameters.add(property)
   }
 
   properties(allParameters)
