@@ -3,21 +3,45 @@ import hudson.model.ParametersDefinitionProperty
 import hudson.model.JobProperty
 
 def execute(pipelineProperties) {
+  // Codigo que ha funcionando
+  // def defaultParameters =  [
+  //     string(
+  //     name: 'CUSTOM',
+  //     description: 'Pipeline Environment Config key',
+  //     defaultValue: 'CUSTOM---..'
+  //   ),
+  //   string(
+  //     name: 'OTRO',
+  //     description: 'OTRO',
+  //     defaultValue: 'OTRO---..'
+  //   )
+  // ]
 
-  // print "====> Symbol: " + pipelineProperties[0].getSymbol()
-  // print "====> getKlass: " + pipelineProperties[0].getKlass()
-  // print "====> getModel: " + pipelineProperties[0].getModel()
-  // print "====> getArguments: " + pipelineProperties[0].getArguments().values()
-  // print "====> toMap: " + pipelineProperties[0].toMap().get("@parameters")
+  // def allParameters = pipelineProperties[0].getArguments().get('<anonymous>')
+  // allParameters.addAll(defaultParameters)
 
-  // Set set = pipelineProperties[0].getArguments().entrySet()
-  // Iterator iterator = set.iterator()
+  // def prop = []
+  // prop.add(
+  //   parameters(
+  //     allParameters
+  //   )
+  // )
+  // prop.add(pipelineProperties[1])
+  // prop.add(pipelineProperties[2])
 
-  // while(iterator.hasNext()) {
-  //   Map.Entry me = (Map.Entry)iterator.next();
-  //   println "Key is: "+ me.getKey() +  "& Value is: "+me.getValue();
-  // }
+  // properties(prop)
 
+  // Codigo que ha funcionando
+
+  // properties([
+  //   parameters(
+  //     allParameters
+  //   ),
+  //   pipelineProperties[1],
+  //   pipelineProperties[2]
+  // ])
+
+  def prop = []
   def defaultParameters =  [
       string(
       name: 'CUSTOM',
@@ -30,42 +54,23 @@ def execute(pipelineProperties) {
       defaultValue: 'OTRO---..'
     )
   ]
-  // def prop = []
-  def allParameters = pipelineProperties[0].getArguments().get('<anonymous>')
-  allParameters.addAll(defaultParameters)
-  // prop.addAll(parameters)
 
-  // for (ParametersDefinitionProperty property in pipelineProperties) {
-  //     if (property.toString().startsWith("@parameters")) {
-  //       parameters = pipelineProperties[0].getArguments().get('<anonymous>')
-  //       parameters.add(customParam)
-  //       println parameters
-      
-  //     } else {
-  //       prop.add(property)
-  //   }
-  // }
+  for (ParametersDefinitionProperty property in pipelineProperties) {
+      if (property.toString().startsWith("@parameters")) {
+        allParameters = pipelineProperties[0].getArguments().get('<anonymous>')
+        allParameters.addAll(defaultParameters)
 
-  // properties(prop)
+        prop.add(
+          parameters(
+            allParameters
+          )
+        )
+      } else {
+        prop.add(property)
+    }
+  }
 
-  def prop = []
-  prop.add(
-    parameters(
-      allParameters
-    )
-  )
-  prop.add(pipelineProperties[1])
-  prop.add(pipelineProperties[2])
-
-  // properties([
-  //   parameters(
-  //     allParameters
-  //   ),
-  //   pipelineProperties[1],
-  //   pipelineProperties[2]
-  // ])
-
-   properties(prop)
+  properties(prop)
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
