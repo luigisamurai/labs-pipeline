@@ -53,7 +53,7 @@ def execute(pipelineProperties) {
         // println property.getArguments()
         // property.add(item)
         // prop.add(property)
-        prop.add(parameters)
+        // prop.add(parameters)
 
     } else {
       prop.add(property)
