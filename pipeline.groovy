@@ -63,16 +63,16 @@ def execute(pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {      
         def jenkinsfileParameters = property.getArguments().get('<anonymous>')
         allParameters.addAll(jenkinsfileParameters)
-
-        prop.add(
-          parameters(
-            allParameters
-          )
-        )
       } else {
         prop.add(property)
     }
   }
+
+  prop.add(
+    parameters(
+      allParameters
+    )
+  )
 
   properties(prop)
 
