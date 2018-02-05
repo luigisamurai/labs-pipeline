@@ -2,7 +2,12 @@
 
 def execute(pipelineProperties) {
 
-  print pipelineProperties[0].getClass()
+  print "====> Symbol: " + pipelineProperties[0].getSymbol()
+  print "====> getKlass: " + pipelineProperties[0].getKlass()
+  print "====> getModel: " + pipelineProperties[0].getModel()
+  print "====> getArguments: " + pipelineProperties[0].getArguments()
+  print "====> toMap: " + pipelineProperties[0].toMap()
+
   properties(pipelineProperties)
 
   stage('test') {
