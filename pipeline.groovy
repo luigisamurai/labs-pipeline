@@ -85,7 +85,12 @@ def execute(pipelineProperties) {
   //   allParameters.add(property)
   // }
 
-  properties(pipelineProperties)
+  // properties(pipelineProperties)
+  properties(
+    parameters,
+    pipelineProperties[1]
+    pipelineProperties[2]
+  )
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
