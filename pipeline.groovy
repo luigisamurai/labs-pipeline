@@ -2,25 +2,26 @@
 
 def execute(pipelineProperties) {
 
-  print "====> Symbol: " + pipelineProperties[0].getSymbol()
-  print "====> getKlass: " + pipelineProperties[0].getKlass()
-  print "====> getModel: " + pipelineProperties[0].getModel()
-  print "====> getArguments: " + pipelineProperties[0].getArguments().values()
-  print "====> toMap: " + pipelineProperties[0].toMap().get("@parameters")
+  // print "====> Symbol: " + pipelineProperties[0].getSymbol()
+  // print "====> getKlass: " + pipelineProperties[0].getKlass()
+  // print "====> getModel: " + pipelineProperties[0].getModel()
+  // print "====> getArguments: " + pipelineProperties[0].getArguments().values()
+  // print "====> toMap: " + pipelineProperties[0].toMap().get("@parameters")
+
+  // Set set = pipelineProperties[0].getArguments().entrySet()
+  // Iterator iterator = set.iterator()
+
+  // while(iterator.hasNext()) {
+  //   Map.Entry me = (Map.Entry)iterator.next();
+  //   println "Key is: "+ me.getKey() +  "& Value is: "+me.getValue();
+  // }
 
   def prop = []
 
-  Set set = pipelineProperties[0].getArguments().entrySet()
-  Iterator iterator = set.iterator()
-
-  while(iterator.hasNext()) {
-    Map.Entry me = (Map.Entry)iterator.next();
-    println "Key is: "+ me.getKey() +  "& Value is: "+me.getValue();
-  }
-
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
-        prop.add(pipelineProperties[0].getArguments().get('<anonymous>'))
+        def parameters = prop.add(pipelineProperties[0].getArguments().get('<anonymous>'))
+        prop.add(parameters(parameters))
       } else {
       prop.add(property)
     }
