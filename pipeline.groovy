@@ -10,6 +10,14 @@ def execute(pipelineProperties) {
 
   def prop = []
 
+  Set set = pipelineProperties[0].getArguments().entrySet()
+  Iterator iterator = set.iterator()
+
+  while(iterator.hasNext()) {
+    Map.Entry me = (Map.Entry)iterator.next();
+    println "Key is: "+ me.getKey() +  "& Value is: "+me.getValue();
+  }
+
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
 
