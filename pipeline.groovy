@@ -1,4 +1,6 @@
 #!/usr/bin/env groovy
+import hudson.model.ParametersDefinitionProperty
+import hudson.model.JobProperty
 
 def execute(pipelineProperties) {
 
@@ -21,7 +23,7 @@ def execute(pipelineProperties) {
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
         def parameters = prop.add(pipelineProperties[0].getArguments().get('<anonymous>'))
-        for(Object parameteValue in parameters) {
+        for(JobProperty parameteValue in parameters) {
           println parameteValue
         }
       } else {
