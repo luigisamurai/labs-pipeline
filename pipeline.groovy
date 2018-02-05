@@ -21,7 +21,9 @@ def execute(pipelineProperties) {
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
         def parameters = prop.add(pipelineProperties[0].getArguments().get('<anonymous>'))
-        prop.add(parameters(parameters))
+        for(ParameterValue parameteValue in parameters) {
+          println parameteValue
+        }
       } else {
       prop.add(property)
     }
