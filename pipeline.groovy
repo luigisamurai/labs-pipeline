@@ -64,7 +64,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
       if (property.toString().startsWith("@parameters")) {      
         def jenkinsfileParameters = property.getArguments().get('<anonymous>')
         // LinkedHashMap
-        Iterator iterator = jenkinsfileParameters.entrySet()
+        Iterator iterator = property.getArguments().entrySet()
         while(iterator.hasNext()) {
           Map.Entry me = (Map.Entry)iterator.next();
           System.out.print("Key is: "+ me.getKey() + 
