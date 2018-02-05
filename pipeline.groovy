@@ -57,7 +57,7 @@ def execute(pipelineProperties) {
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
-        allParameters = pipelineProperties[0].getArguments().get('<anonymous>')
+        allParameters = property.getArguments().get('<anonymous>')
         allParameters.addAll(defaultParameters)
 
         prop.add(
