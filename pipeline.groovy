@@ -3,7 +3,7 @@ import hudson.model.ParametersDefinitionProperty
 import hudson.model.StringParameterDefinition
 
 @NonCPS
-def execute(pipelineProperties) {
+def execute() {
   // def abcd = parameters ([
   //       string(
   //           name: 'PIPELINE_ENV_DEFAULT',
@@ -78,14 +78,14 @@ def execute(pipelineProperties) {
   //   )
   //   allParameters.add(item)
   // }
-
-  def allParameters = []
-  for (ParametersDefinitionProperty property in properties) {
-    allParameters.add(property)
-  }
+  print properties
+  // def allParameters = []
+  // for (ParametersDefinitionProperty property in properties) {
+  //   allParameters.add(property)
+  // }
 
   // properties(pipelineProperties)
-  properties(pipelineProperties)
+  properties([])
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
