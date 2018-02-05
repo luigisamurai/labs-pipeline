@@ -48,6 +48,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
       name: 'PIPELINE_ENV',
       description: 'Target environment',
       choices: supportedEnvs.split(',').join('\n')
+      defaultValue: 'prod'
     ),
     string(
       name: 'OTRO',
