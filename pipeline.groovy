@@ -37,30 +37,30 @@ def execute(pipelineProperties) {
 
   // allParameters.add(pipelineParameter)
 
-  for (ParametersDefinitionProperty property in pipelineProperties) {
-    if ( property.toString().startsWith("@parameters") ) {
-        // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
-        // for(ParameterValue parameter in jenkinsfileParameters) {
-        //   def item = string(
-        //       name: parameter.name,
-        //       description: parameter.description
-        //   )
-        //   allParameters.add(item)
-        // }
+  // for (ParametersDefinitionProperty property in pipelineProperties) {
+  //   if ( property.toString().startsWith("@parameters") ) {
+  //       // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
+  //       // for(ParameterValue parameter in jenkinsfileParameters) {
+  //       //   def item = string(
+  //       //       name: parameter.name,
+  //       //       description: parameter.description
+  //       //   )
+  //       //   allParameters.add(item)
+  //       // }
 
-        // properties([
-        //     parameters(allParameters)
-        // ])
-        // prop.add(property.getArguments())
-        // println property.getArguments()
-        // property.add(item)
-        // prop.add(property)
-        prop.add(parameters)
+  //       // properties([
+  //       //     parameters(allParameters)
+  //       // ])
+  //       // prop.add(property.getArguments())
+  //       // println property.getArguments()
+  //       // property.add(item)
+  //       // prop.add(property)
+  //       // prop.add(parameters)
 
-    } else {
-      prop.add(property)
-    }
-  }
+  //   } else {
+  //     prop.add(property)
+  //   }
+  // }
 
   // def jenkinsfileParameters = currentBuild.rawBuild.getAction(ParametersAction.class)
   // def allParameters = []
@@ -85,7 +85,7 @@ def execute(pipelineProperties) {
   //   allParameters.add(property)
   // }
 
-  properties(prop)
+  properties(pipelineProperties)
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
