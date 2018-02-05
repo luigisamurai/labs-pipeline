@@ -68,8 +68,8 @@ def execute(supportedEnvs, pipelineProperties = null) {
         Iterator iterator = set.iterator();   
         while(iterator.hasNext()) {
           Map.Entry me = (Map.Entry)iterator.next();
-          System.out.print("Key is: "+ me.getKey() + 
-                    "& Value is: "+me.getValue()+"\n");
+          println "Key is: "+ me.getKey() + 
+                    "& Value is: "+me.getValue()+"\n";
         }
         allParameters.addAll(jenkinsfileParameters)
       } else {
