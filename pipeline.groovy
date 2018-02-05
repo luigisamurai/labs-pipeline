@@ -41,6 +41,43 @@ def execute(pipelineProperties) {
   //   pipelineProperties[2]
   // ])
 
+  // esta trabajo aun mejor
+  // def prop = []
+  // def defaultParameters =  [
+  //     string(
+  //     name: 'CUSTOM',
+  //     description: 'Pipeline Environment Config key',
+  //     defaultValue: 'CUSTOM---..'
+  //   ),
+  //   string(
+  //     name: 'OTRO',
+  //     description: 'OTRO',
+  //     defaultValue: 'OTRO---..'
+  //   )
+  // ]
+
+  // for (ParametersDefinitionProperty property in pipelineProperties) {
+  //     if (property.toString().startsWith("@parameters")) {
+  //       def allParameters = []
+  //       def jenkinsfileParameters = property.getArguments().get('<anonymous>')
+  //       allParameters.addAll(defaultParameters)
+  //       allParameters.addAll(jenkinsfileParameters)
+
+  //       prop.add(
+  //         parameters(
+  //           allParameters
+  //         )
+  //       )
+  //     } else {
+  //       prop.add(property)
+  //   }
+  // }
+
+  // properties(prop)
+  // esta trabajo aun mejor
+
+  def paramDef = currentBuild.getProperty(ParametersDefinitionProperty.class)
+  println paramDef
   def prop = []
   def defaultParameters =  [
       string(
@@ -55,7 +92,7 @@ def execute(pipelineProperties) {
     )
   ]
 
-  for (ParametersDefinitionProperty property in pipelineProperties) {
+  for (ParametersDefinitionProperty property in paramDef) {
       if (property.toString().startsWith("@parameters")) {
         def allParameters = []
         def jenkinsfileParameters = property.getArguments().get('<anonymous>')
