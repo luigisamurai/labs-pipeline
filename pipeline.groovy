@@ -25,7 +25,7 @@ def execute(pipelineProperties) {
           println parameteValue
         }
       } else {
-      prop.add(property)
+      // prop.add(property)
     }
   }
 
