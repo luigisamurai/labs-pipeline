@@ -26,7 +26,7 @@ def execute(pipelineProperties) {
   def prop = []
   def parameters = pipelineProperties[0].getArguments().get('<anonymous>')
   parameters.add(customParam)
-  prop.addAll(parameters )
+  prop.addAll(parameters)
 
   // for (ParametersDefinitionProperty property in pipelineProperties) {
   //     if (property.toString().startsWith("@parameters")) {
@@ -41,7 +41,11 @@ def execute(pipelineProperties) {
 
   // properties(prop)
 
-  properties (prop)
+  properties([
+    parameters(
+      customParam
+    )
+  ])
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
