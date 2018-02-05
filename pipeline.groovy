@@ -18,8 +18,8 @@ def execute(pipelineProperties) {
   //   println "Key is: "+ me.getKey() +  "& Value is: "+me.getValue();
   // }
 
-  def customParam =  [ 
-    string(
+  def customParam =  [
+      string(
       name: 'CUSTOM',
       description: 'Pipeline Environment Config key',
       defaultValue: 'CUSTOM---..'
@@ -43,7 +43,7 @@ def execute(pipelineProperties) {
 
   // properties(prop)
 
-  properties(
+  properties([
     parameters(
       customParam
     )
