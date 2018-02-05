@@ -10,11 +10,20 @@ def execute(pipelineProperties) {
   //       )
   //   ])
 
-  def item = string(
-      name: 'PIPELINE_ENV_DEFAULT',
-      description: 'Specify the environment to be run, by default it executes stg. for example: qa, stg, prod, onprem, eu',
-      defaultValue: 'stgXDR.....'
-  )
+  def parameters =[
+    [
+      $class: 'StringParameterDefinition',
+      defaultValue: '',
+      description: 'Some Description',
+      name : 'MY_PARAM'
+    ],
+    [
+      $class: 'StringParameterDefinition',
+      defaultValue: '',
+      description: 'Some Description', 
+      name: 'MY_PARAM2'
+    ]
+  ]
     
   // //   pipelineProperties.add(abcd)
   
@@ -42,8 +51,9 @@ def execute(pipelineProperties) {
         // ])
         // prop.add(property.getArguments())
         // println property.getArguments()
-        property.add(item)
-        prop.add(property)
+        // property.add(item)
+        // prop.add(property)
+        prop.add(parameters)
 
     } else {
       prop.add(property)
@@ -73,7 +83,7 @@ def execute(pipelineProperties) {
   //   allParameters.add(property)
   // }
 
-  // properties(pipelineProperties)
+  properties(prop)
 
   stage('test') {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
