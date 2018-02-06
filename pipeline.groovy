@@ -52,13 +52,11 @@ def execute(supportedEnvs, pipelineProperties = null) {
     ),
     credentials(
       name: 'OTRO',
-      description: 'OTRO',
-      required: true
+      description: 'OTRO'
     ),
     credentials(
       name: 'OTRO_MAS',
-      description: 'OTRO_MAS',
-      required: true
+      description: 'OTRO_MAS'
     )
   ]
 
@@ -82,7 +80,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
 
           for(defualtIndex = 0; defualtIndex < allParameters.size(); defualtIndex ++) {
             defualtParameter = allParameters.get(defualtIndex)
-
+            println defualtParameter.getArguments().name + " ===> " + parameterName
             if (defualtParameter.getArguments().name == parameterName) {
               allParameters.remove(defualtIndex)
             }
