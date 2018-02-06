@@ -53,7 +53,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
     string(
         name: 'BROWSERS',
         description: 'Comma separated list of browsers to be run. The possibles values are: chrome,firefox,ie,edge,safari',
-        defaultValue: DEFAULT_BROWSERS
+        defaultValue: ''
     ),
     string(
         name: 'HEADLESS',
@@ -73,22 +73,22 @@ def execute(supportedEnvs, pipelineProperties = null) {
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
-        def jenkinsfileParameters = property.getArguments().get('<anonymous>')
+        // def jenkinsfileParameters = property.getArguments().get('<anonymous>')
 
-        for(index = 0; index < jenkinsfileParameters.size(); index ++) {
-          parameter = jenkinsfileParameters.get(index)
-          parameterName = parameter.getArguments().name
+        // for(index = 0; index < jenkinsfileParameters.size(); index ++) {
+        //   parameter = jenkinsfileParameters.get(index)
+        //   parameterName = parameter.getArguments().name
 
-          // for(defualtIndex = 0; defualtIndex < parametersOrDefault.size(); defualtIndex ++) {
-          //   defualtParameter = parametersOrDefault.get(defualtIndex)
-          //   println defualtParameter.getArguments().name
-          //   if (defualtParameter.getArguments().name == parameterName) {
-          //     parametersOrDefault.remove(defualtIndex)
-          //   }
-          // }
+        //   for(defualtIndex = 0; defualtIndex < parametersOrDefault.size(); defualtIndex ++) {
+        //     defualtParameter = parametersOrDefault.get(defualtIndex)
+        //     println defualtParameter.getArguments().name
+        //     if (defualtParameter.getArguments().name == parameterName) {
+        //       parametersOrDefault.remove(defualtIndex)
+        //     }
+        //   }
 
-          parametersOrDefault.add(parameter)
-        }
+        //   parametersOrDefault.add(parameter)
+        // }
       } 
       if (property.toString().startsWith("@buildDiscarder")) {
         buildDiscarderOrDefault = property
