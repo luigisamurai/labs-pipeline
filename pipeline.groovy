@@ -2,6 +2,10 @@
 import hudson.model.ParametersDefinitionProperty
 import hudson.model.JobProperty
 
+@Field final String PARAMETERS_TYPE = '@parameters'
+@Field final String BUILD_DISCARDER_TYPE = '@buildDiscarder'
+@Field final String PARAMETERS_KEY = '<anonymous>'
+
 def execute(supportedEnvs, pipelineProperties = null) {
   // Codigo que ha funcionando
   // def defaultParameters =  [
@@ -71,10 +75,10 @@ def execute(supportedEnvs, pipelineProperties = null) {
   def parametersOrDefault = defaultParameters
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
-      if (property.toString().startsWith("@parameters")) {
-        def jenkinsfileParameters = property.getArguments().get('<anonymous>')
+      if (property.toString().startsWith(PARAMETERS_TYPE)) {
+        def jenkinsfileParameters = property.getArguments().get(PARAMETERS_KEY)
         parametersOrDefault = mergeParameters(jenkinsfileParameters, defaultParameters)
-      } else if (property.toString().startsWith("@buildDiscarder")) {
+      } else if (property.toString().startsWith(BUILD_DISCARDER_TYPE)) {
         buildDiscarderOrDefault = property
       } else {
         prop.add(property)
@@ -100,20 +104,6 @@ def execute(supportedEnvs, pipelineProperties = null) {
 private mergeParameters(jenkinsfileParameters, defaultParameters) {
     def allParameters = defaultParameters
 
-    // for(index = 0; index < jenkinsfileParameters.size(); index ++) {
-    //     parameter = jenkinsfileParameters.get(index)
-    //     parameterName = parameter.getArguments().name
-
-    //     for(defaultIndex = 0; defaultIndex < allParameters.size(); defaultIndex ++) {
-    //         defaultParameter = allParameters.get(defaultIndex)
-
-    //         if (defaultParameter.getArguments().name == parameterName) {
-    //             allParameters.remove(defaultIndex)
-    //         }
-    //     }
-
-    //     allParameters.add(parameter)
-    // }
     for(parameter in jenkinsfileParameters) {
         parameterName = parameter.getArguments().name
 
