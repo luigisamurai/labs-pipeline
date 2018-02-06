@@ -1,6 +1,7 @@
 #!/usr/bin/env groovy
 import hudson.model.ParametersDefinitionProperty
 import hudson.model.JobProperty
+import groovy.transform.Field
 
 @Field final String PARAMETERS_TYPE = '@parameters'
 @Field final String BUILD_DISCARDER_TYPE = '@buildDiscarder'
