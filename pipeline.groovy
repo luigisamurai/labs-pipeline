@@ -50,11 +50,11 @@ def execute(supportedEnvs, pipelineProperties = null) {
       choices: supportedEnvs.split(',').join('\n'),
       value: 'prod'
     ),
-    credentials(
+    string(
       name: 'OTRO',
       description: 'OTRO'
     ),
-    credentials(
+    string(
       name: 'OTRO_MAS',
       description: 'OTRO_MAS'
     )
