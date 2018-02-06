@@ -111,6 +111,7 @@ private mergeParameters(jenkinsfileParameters, defaultParameters) {
         for(defaultParameter in defaultParameters) {
             if (defaultParameter.getArguments().name == parameterName) {
                 allParameters.remove(defaultParameter)
+                defaultParameter.remove(defaultParameter)
             }
         }
 
