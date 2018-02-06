@@ -59,8 +59,14 @@ def execute(supportedEnvs, pipelineProperties = null) {
       description: 'OTRO_MAS'
     )
   ]
+  def buildDiscarderOrDefault = buildDiscarder(
+    logRotator(
+        artifactDaysToKeepStr: '', 
+        artifactNumToKeepStr: '', 
+        daysToKeepStr: 1, 
+        numToKeepStr: 2))
 
-  def allParameters = defaultParameters
+  def parameterOrDefault = defaultParameters
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
@@ -70,26 +76,29 @@ def execute(supportedEnvs, pipelineProperties = null) {
           parameter = jenkinsfileParameters.get(index)
           parameterName = parameter.getArguments().name
 
-          for(defualtIndex = 0; defualtIndex < allParameters.size(); defualtIndex ++) {
-            defualtParameter = allParameters.get(defualtIndex)
+          for(defualtIndex = 0; defualtIndex < parameterOrDefault.size(); defualtIndex ++) {
+            defualtParameter = parameterOrDefault.get(defualtIndex)
 
             if (defualtParameter.getArguments().name == parameterName) {
-              allParameters.remove(defualtIndex)
+              parameterOrDefault.remove(defualtIndex)
             }
           }
 
-          allParameters.add(parameter)
+          parameterOrDefault.add(parameter)
         }
+      } 
+      if (property.toString().startsWith("@buildDiscarder")) {
+        buildDiscarderOrDefault = property
       } else {
-        println property.toString()
         prop.add(property)
     }
   }
 
   prop.add(
     parameters(
-      allParameters
-    )
+      parameterOrDefault
+    ),
+    buildDiscarderOrDefault
   )
 
   properties(prop)
