@@ -53,15 +53,21 @@ def execute(supportedEnvs, pipelineProperties = null) {
     string(
       name: 'OTRO',
       description: 'OTRO',
-      defaultValue: 'OTRO---..'
+      defaultValue: 'OTRO---..',
+      required: true
+    ),
+    string(
+      name: 'OTRO_MAS',
+      description: 'OTRO_MAS',
+      defaultValue: 'OTRO_MAS',
+      required: true
     )
   ]
 
-  def allParameters = defaultParameters
-  // allParameters.addAll(defaultParameters)
+  def allParameters = defaultParameters)
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
-      if (property.toString().startsWith("@parameters")) {      
+      if (property.toString().startsWith("@parameters")) {
         def jenkinsfileParameters = property.getArguments().get('<anonymous>')
         // LinkedHashMap
         // Set set = property.getArguments().entrySet();
@@ -71,14 +77,18 @@ def execute(supportedEnvs, pipelineProperties = null) {
         //   println "Key is: "+ me.getKey() + 
         //             "& Value is: "+me.getValue().getName()+"\n";
         // }
-        // for(index = 0; index < jenkinsfileParameters.size(); index ++) {
-        //   jenkinsfileStringParameter = jenkinsfileParameters.get(index).toString()
+        
+        // def defaultNamesParameters = []
+        // for(defualtIndex = 0; defualtIndex < defaultParameters.size(); defualtIndex ++) {
+        //   defualtParameter = defaultParameters.get(defualtIndex).getArguments()
+        //   defaultNamesParameters.add(defualtStringParameter.name)
         // }
 
-        for(defualtIndex = 0; defualtIndex < defaultParameters.size(); defualtIndex ++) {
-          defualtStringParameter = defaultParameters.get(defualtIndex).toString()
-          println defualtStringParameter
-        }
+        // for(index = 0; index < jenkinsfileParameters.size(); index ++) {
+        //   jenkinsfileParameter = jenkinsfileParameters.get(index).getArguments()
+        //   defaultNamesParameters.add(jenkinsfileParameter.name)
+        // }
+
         allParameters.addAll(jenkinsfileParameters)
       } else {
         prop.add(property)
