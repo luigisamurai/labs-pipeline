@@ -43,7 +43,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
 
   // esta trabajo aun mejor
   def prop = []
-  defaultParameters =  [
+  def defaultParameters =  [
     choice(
       name: 'PIPELINE_ENV',
       description: 'Target environment',
@@ -76,13 +76,13 @@ def execute(supportedEnvs, pipelineProperties = null) {
           parameter = jenkinsfileParameters.get(index)
           parameterName = parameter.getArguments().name
 
-          for(defualtIndex = 0; defualtIndex < parametersOrDefault.size(); defualtIndex ++) {
-            defualtParameter = parametersOrDefault.get(defualtIndex)
-            println defualtParameter.getArguments().name
-            if (defualtParameter.getArguments().name == parameterName) {
-              parametersOrDefault.remove(defualtIndex)
-            }
-          }
+          // for(defualtIndex = 0; defualtIndex < parametersOrDefault.size(); defualtIndex ++) {
+          //   defualtParameter = parametersOrDefault.get(defualtIndex)
+          //   println defualtParameter.getArguments().name
+          //   if (defualtParameter.getArguments().name == parameterName) {
+          //     parametersOrDefault.remove(defualtIndex)
+          //   }
+          // }
 
           parametersOrDefault.add(parameter)
         }
