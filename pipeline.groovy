@@ -89,8 +89,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
 
         //   parametersOrDefault.add(parameter)
         // }
-      } 
-      if (property.toString().startsWith("@buildDiscarder")) {
+      } if (property.toString().startsWith("@buildDiscarder")) {
         buildDiscarderOrDefault = property
       } else {
         prop.add(property)
@@ -99,7 +98,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
 
   prop.add(
     parameters(
-      parametersOrDefault
+      defaultParameters
     )
   )
 
