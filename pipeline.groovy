@@ -69,26 +69,11 @@ def execute(supportedEnvs, pipelineProperties = null) {
         numToKeepStr: 2))
 
   def parametersOrDefault = defaultParameters
-  // parametersOrDefault.addAll(defaultParameters)
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
         def jenkinsfileParameters = property.getArguments().get('<anonymous>')
-
-        for(index = 0; index < jenkinsfileParameters.size(); index ++) {
-          parameter = jenkinsfileParameters.get(index)
-          parameterName = parameter.getArguments().name
-
-          for(defualtIndex = 0; defualtIndex < parametersOrDefault.size(); defualtIndex ++) {
-            defualtParameter = parametersOrDefault.get(defualtIndex)
-
-            if (defualtParameter.getArguments().name == parameterName) {
-              parametersOrDefault.remove(defualtIndex)
-            }
-          }
-
-          parametersOrDefault.add(parameter)
-        }
+        parametersOrDefault = mergeParameters(jenkinsfileParameters, defaultParameters)
       } else if (property.toString().startsWith("@buildDiscarder")) {
         buildDiscarderOrDefault = property
       } else {
@@ -110,6 +95,27 @@ def execute(supportedEnvs, pipelineProperties = null) {
      echo("Hello, it is my firts multi branch pipeline custom. ${env.PIPELINE_ENV_DEFAULT}")
      echo("Hello, it is my firts multi branch pipeline. ${env.PIPELINE_ENV}")
   }
+}
+
+private mergeParameters(jenkinsfileParameters, defaultParameters) {
+    def allParameters = defaultParameters
+
+    for(index = 0; index < jenkinsfileParameters.size(); index ++) {
+        parameter = jenkinsfileParameters.get(index)
+        parameterName = parameter.getArguments().name
+
+        for(defaultIndex = 0; defaultIndex < allParameters.size(); defaultIndex ++) {
+            defaultParameter = allParameters.get(defaultIndex)
+
+            if (defaultParameter.getArguments().name == parameterName) {
+                allParameters.remove(defaultIndex)
+            }
+        }
+
+        allParameters.add(parameter)
+    }
+
+    return allParameters
 }
 
 return this
