@@ -43,7 +43,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
 
   // esta trabajo aun mejor
   def prop = []
-  def defaultParameters =  [
+  defaultParameters =  [
     choice(
       name: 'PIPELINE_ENV',
       description: 'Target environment',
@@ -96,7 +96,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
 
   prop.add(
     parameters(
-      parameterOrDefault
+      parametersOrDefault
     )
   )
 
