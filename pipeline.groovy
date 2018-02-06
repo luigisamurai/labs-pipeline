@@ -80,11 +80,11 @@ def execute(supportedEnvs, pipelineProperties = null) {
             defualtParameter = parametersOrDefault.get(defualtIndex)
             println defualtParameter.getArguments().name
             if (defualtParameter.getArguments().name == parameterName) {
-              parameterOrDefault.remove(defualtIndex)
+              parametersOrDefault.remove(defualtIndex)
             }
           }
 
-          parameterOrDefault.add(parameter)
+          parametersOrDefault.add(parameter)
         }
       } 
       if (property.toString().startsWith("@buildDiscarder")) {
