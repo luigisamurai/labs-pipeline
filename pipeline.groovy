@@ -64,7 +64,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
     )
   ]
 
-  def allParameters = defaultParameters)
+  def allParameters = defaultParameters
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
