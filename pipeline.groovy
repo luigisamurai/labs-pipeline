@@ -66,7 +66,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
         daysToKeepStr: 1, 
         numToKeepStr: 2))
 
-  def parameterOrDefault = defaultParameters
+  def parametersOrDefault = defaultParameters
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
@@ -76,9 +76,9 @@ def execute(supportedEnvs, pipelineProperties = null) {
           parameter = jenkinsfileParameters.get(index)
           parameterName = parameter.getArguments().name
 
-          for(defualtIndex = 0; defualtIndex < parameterOrDefault.size(); defualtIndex ++) {
-            defualtParameter = parameterOrDefault.get(defualtIndex)
-
+          for(defualtIndex = 0; defualtIndex < parametersOrDefault.size(); defualtIndex ++) {
+            defualtParameter = parametersOrDefault.get(defualtIndex)
+            println defualtParameter.getArguments().name
             if (defualtParameter.getArguments().name == parameterName) {
               parameterOrDefault.remove(defualtIndex)
             }
