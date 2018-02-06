@@ -68,8 +68,8 @@ def execute(supportedEnvs, pipelineProperties = null) {
         daysToKeepStr: 1, 
         numToKeepStr: 2))
 
-  def parametersOrDefault = []
-  parametersOrDefault.addAll(defaultParameters)
+  def parametersOrDefault = defaultParameters
+  // parametersOrDefault.addAll(defaultParameters)
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
@@ -81,7 +81,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
 
           for(defualtIndex = 0; defualtIndex < parametersOrDefault.size(); defualtIndex ++) {
             defualtParameter = parametersOrDefault.get(defualtIndex)
-            println defualtParameter.getArguments().name
+
             if (defualtParameter.getArguments().name == parameterName) {
               parametersOrDefault.remove(defualtIndex)
             }
