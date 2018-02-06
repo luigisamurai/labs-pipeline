@@ -51,12 +51,14 @@ def execute(supportedEnvs, pipelineProperties = null) {
       value: 'prod'
     ),
     string(
-      name: 'OTRO',
-      description: 'OTRO'
+        name: 'BROWSERS',
+        description: 'Comma separated list of browsers to be run. The possibles values are: chrome,firefox,ie,edge,safari',
+        defaultValue: DEFAULT_BROWSERS
     ),
     string(
-      name: 'OTRO_MAS',
-      description: 'OTRO_MAS'
+        name: 'HEADLESS',
+        description: 'Specify the mode Headless (virtual mode without a UI browser). The value true enable the mode headless and the void value disable it',
+        defaultValue: ''
     )
   ]
   def buildDiscarderOrDefault = buildDiscarder(
