@@ -65,22 +65,14 @@ def execute(supportedEnvs, pipelineProperties = null) {
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
         def jenkinsfileParameters = property.getArguments().get('<anonymous>')
-        // allParameters.addAll(jenkinsfileParameters)
-        // LinkedHashMap
-        // Set set = property.getArguments().entrySet();
-        // Iterator iterator = set.iterator();   
-        // while(iterator.hasNext()) {
-        //   Map.Entry me = (Map.Entry)iterator.next();
-        //   println "Key is: "+ me.getKey() + 
-        //             "& Value is: "+me.getValue().getName()+"\n";
-        // }
+
         for(index = 0; index < jenkinsfileParameters.size(); index ++) {
           parameter = jenkinsfileParameters.get(index)
           parameterName = parameter.getArguments().name
 
           for(defualtIndex = 0; defualtIndex < allParameters.size(); defualtIndex ++) {
             defualtParameter = allParameters.get(defualtIndex)
-            println defualtParameter.getArguments().name + " ===> " + parameterName
+
             if (defualtParameter.getArguments().name == parameterName) {
               allParameters.remove(defualtIndex)
             }
@@ -89,6 +81,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
           allParameters.add(parameter)
         }
       } else {
+        println property.toString()
         prop.add(property)
     }
   }
