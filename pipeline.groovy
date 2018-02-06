@@ -66,7 +66,8 @@ def execute(supportedEnvs, pipelineProperties = null) {
         daysToKeepStr: 1, 
         numToKeepStr: 2))
 
-  def parametersOrDefault = defaultParameters
+  def parametersOrDefault = []
+  parametersOrDefault.addAll(defaultParameters)
 
   for (ParametersDefinitionProperty property in pipelineProperties) {
       if (property.toString().startsWith("@parameters")) {
