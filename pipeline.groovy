@@ -98,7 +98,7 @@ def execute(supportedEnvs, pipelineProperties = null) {
 
   prop.add(
     parameters(
-      defaultParameters
+      parametersOrDefault
     )
   )
 
