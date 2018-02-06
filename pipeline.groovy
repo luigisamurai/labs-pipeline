@@ -97,9 +97,10 @@ def execute(supportedEnvs, pipelineProperties = null) {
   prop.add(
     parameters(
       parameterOrDefault
-    ),
-    buildDiscarderOrDefault
+    )
   )
+
+  prop.add(buildDiscarderOrDefault)
 
   properties(prop)
 
