@@ -102,21 +102,27 @@ def execute(supportedEnvs, pipelineProperties = null) {
   }
 }
 
-private mergeParameters(jenkinsfileParameters, defaultParameters) {
-    def allParameters = defaultParameters
+private mergeParameters(jenkinsfileParameters, pipelineParameters) {
+    def defaultParameters = []
+    def allParameters = []
 
-    for(parameter in jenkinsfileParameters) {
-        parameterName = parameter.getArguments().name
+    for (pipelineParameter in pipelineParameters) {
+        def isDefaultParameter = true
 
-        for(defaultParameter in defaultParameters) {
-            if (defaultParameter.getArguments().name == parameterName) {
-                allParameters.remove(defaultParameter)
-                defaultParameters.remove(defaultParameter)
+        for (jenkinsfileParameter in jenkinsfileParameters) {
+            if (jenkinsfileParameter.getArguments().name == pipelineParameter.getArguments().name) {
+                isDefaultParameter = false
+                break
             }
         }
 
-        allParameters.add(parameter)
+        if (isDefaultParameter) {
+            defaultParameters.add(pipelineParameter)
+        }
     }
+    
+    allParameters.addAll(defaultParameters)
+    allParameters.addAll(jenkinsfileParameters)
 
     return allParameters
 }
