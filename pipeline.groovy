@@ -56,6 +56,16 @@ def execute(supportedEnvs, pipelineProperties = null) {
       value: 'prod'
     ),
     string(
+        name: 'PIPELINE_ENV2',
+        description: 'PIPELINE_ENV2',
+        defaultValue: ''
+    ),
+    string(
+        name: 'PIPELINE_ENV3',
+        description: 'PIPELINE_ENV3',
+        defaultValue: ''
+    ),
+    string(
         name: 'BROWSERS',
         description: 'Comma separated list of browsers to be run. The possibles values are: chrome,firefox,ie,edge,safari',
         defaultValue: ''
